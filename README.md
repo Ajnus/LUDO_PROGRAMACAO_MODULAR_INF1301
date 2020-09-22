@@ -1,4 +1,5 @@
 frameword de interface gráfica: TKinter
+
 versão do python 3.8.2
 
 Jogo de Ludo
