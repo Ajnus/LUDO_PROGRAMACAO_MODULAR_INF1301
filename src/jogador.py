@@ -34,3 +34,6 @@ class Jogador:
             except InputError as ex:
                 print(ex)
                 return 2, 'error'
+
+    def armazena_jogador(self, id, nome, cor_peao):
+        base.jogadores_cadastrados[id] = nome, cor_peao
