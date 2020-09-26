@@ -6,9 +6,25 @@ class Jogador:
     def __init__(self):
         pass
 
-    def cadastra_jogadores(self, cores_disponiveis):
+    def cadastra_jogador(self, cores_disponiveis):
         indice_cor = 0
-        nome = input(SOLICITA_NOME)
+        repete = True
+        #captura nome válido do usuário
+        while repete:
+            try:
+                nome = input(SOLICITA_NOME).strip()
+                if len(nome) > 20:
+                    raise InputError(f'Escolha inválida!\n'
+                                     'O nome pode ter no máximo 20 caracteres\n')
+                elif len(nome) == 0:
+                    raise InputError(f'Escolha inválida!\n'
+                                     'O nome tem que ter no mínimo 1 caracter diferente de espaço em branco.\n')
+                repete = False
+
+            except InputError as ex:
+                print(ex)
+                return 1, 'error'
+
         print("%s, escolha o seu peão:"%nome)
 
         #exibe cores dispiveis
@@ -29,11 +45,11 @@ class Jogador:
 
             except ValueError:
                 print(ALERTA_SO_NUMEROS)
-                return 1, 'error'
+                return 2, 'error'
 
             except InputError as ex:
                 print(ex)
-                return 2, 'error'
+                return 3, 'error'
 
     def armazena_jogador(self, id, nome, cor_peao):
         base.jogadores_cadastrados[id] = nome, cor_peao
