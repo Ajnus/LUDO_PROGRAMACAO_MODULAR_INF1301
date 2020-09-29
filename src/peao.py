@@ -4,11 +4,11 @@ class Peao:
     def __init__(self):
         pass
 
-    def cores_disponiveis(self):
-        cores = base.peoes_cores_disponiveis
+    def coresDisponiveis(self):
+        cores = base.peoesCoresDisponiveis
         return cores
 
-    def remove_cor(self, cor):
-        cores = base.peoes_cores_disponiveis
+    def removeCor(self, cor):
+        cores = base.peoesCoresDisponiveis
         cores.remove(cor)
-        base.peoes_cores_disponiveis = cores
+        base.peoesCoresDisponiveis = cores
