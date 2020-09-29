@@ -1,3 +1,3 @@
 import unittest
-class Test_Dado(unittest.TestCase):
+class TestDado(unittest.TestCase):
     pass

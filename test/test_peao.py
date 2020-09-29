@@ -1,3 +1,3 @@
 import unittest
-class Test_Peao(unittest.TestCase):
+class TestPeao(unittest.TestCase):
     pass
