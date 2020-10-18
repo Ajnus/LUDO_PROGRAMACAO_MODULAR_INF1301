@@ -9,8 +9,8 @@ class TestDado(unittest.TestCase):
 
 
     def testPrimeiroJogadorEmpate(self):
-        resultado = definirPrimeiroJogador([(0, 2), (1, 4), (2, 4), (3, 2)])
-        self.assertEqual([1, 2], resultado)
+        resultado = definirPrimeiroJogador([(0, 4), (1, 3), (2, 4), (3, 4)])
+        self.assertEqual([0, 2, 3], resultado)
 
 
     def testPrimeiroJogadorListaVazia(self):
