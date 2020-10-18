@@ -12,7 +12,8 @@ def definirPrimeiroJogador(resultadoRolagemDado):
 
         elif jogador[numeroSorteado] == maior:
             maior = jogador[numeroSorteado]
-            empate.append(primeiroJogador)
+            if primeiroJogador not in empate:
+                empate.append(primeiroJogador)
             empate.append(jogador[id])
 
     if len(empate) != 0:
