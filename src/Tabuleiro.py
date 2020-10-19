@@ -283,4 +283,14 @@ def rotacionaCasaSaida():
     sBotR = sBotR.rotate(-90*tabState)
     sBotR.save(sBotPath[:-4] + 'R' + ".gif")
     sBot = tk.PhotoImage(file=sBotPath[:-4] + 'R' + ".gif")
+    
+    # Define todas as casas passáveis
+def definirStatusCasa(posicao):
+    if posicao < 57: #casas passáveis
+        return 0
+    if posicao == 57: # casa final
+        return 1
+    else:
+        return 2 
+    
     return
