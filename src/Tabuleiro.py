@@ -166,7 +166,7 @@ def moverTabuleiro():
     global sRight
     global sBot
 
-    global ImgCentro
+    global imgCentro
 
     global sLeftPath
     global sTopPath
@@ -179,10 +179,10 @@ def moverTabuleiro():
         tabState = 0
 
     # rotaciona imagem centro (cria nova imagem rotacionada a partir da original, mantendo o uso da tkInter)
-    ImgCentroR = Image.open(centroPath)
-    ImgCentroR = ImgCentroR.rotate(-90*tabState)
-    ImgCentroR.save("Imagens\\centroR.gif")
-    ImgCentro = tk.PhotoImage(file="Imagens\\centroR.gif")
+    imgCentroR = Image.open(centroPath)
+    imgCentroR = imgCentroR.rotate(-90*tabState)
+    imgCentroR.save("Imagens\\centroR.gif")
+    imgCentro = tk.PhotoImage(file="Imagens\\centroR.gif")
 
     # SUBSTITUI posição das bases e casas coloridas
     if tabState == 0:   # amarelo joga
