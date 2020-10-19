@@ -3,10 +3,11 @@ from db import base
 def criarPeoes():
     cores = base.peoesCoresDisponiveis
     id = 0
+    posicao = 0
     for cor in cores:
         listaIds = []
         for i in range(4):
-            listaIds.append(id)
+            listaIds.append([id, posicao])
             id += 1
         armazenaPeao(listaIds, cor)
 
