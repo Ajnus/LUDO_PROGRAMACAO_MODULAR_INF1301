@@ -1,14 +1,27 @@
 from db import base
 
-class Peao:
-    def __init__(self):
-        pass
+def criarPeoes():
+    cores = base.peoesCoresDisponiveis
+    id = 0
+    for cor in cores:
+        listaIds = []
+        for i in range(4):
+            listaIds.append(id)
+            id += 1
+        armazenaPeao(listaIds, cor)
 
-    def coresDisponiveis(self):
-        cores = base.peoesCoresDisponiveis
-        return cores
+def armazenaPeao(listaId, corPeao):
+    base.peoesCadastrados[corPeao] = listaId
 
-    def removeCor(self, cor):
-        cores = base.peoesCoresDisponiveis
-        cores.remove(cor)
-        base.peoesCoresDisponiveis = cores
+def coresDisponiveis():
+    cores = base.peoesCoresDisponiveis
+    return cores
+
+def removeCor(cor):
+    cores = base.peoesCoresDisponiveis
+    cores.remove(cor)
+    base.peoesCoresDisponiveis = cores
+
+if __name__ == '__main__':
+    criarPeoes()
+    print(base.peoesCadastrados)
