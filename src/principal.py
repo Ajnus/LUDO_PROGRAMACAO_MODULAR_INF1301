@@ -1,17 +1,20 @@
 from src.jogador import *
 from src.peao import *
+from db.base import *
 
 def main():
-    jogador = Jogador()
-    peao = Peao()
-    coresDisponiveis = peao.coresDisponiveis()
+    #Criando e cadastrando peoes:
+    criarPeoes()
+
+    #Criando e cadastrando jogadores
+    cores = coresDisponiveis()
     numeroDeJogadores = 4
     id = 0
     while id < numeroDeJogadores:
-        cor, nome = jogador.cadastraJogador(coresDisponiveis)
+        cor, nome = cadastraJogador(cores)
         if type(cor) == str:
-            peao.removeCor(cor)
-            jogador.armazenaJogador(id, nome, cor)
+            removeCor(cor)
+            armazenaJogador(id, nome, cor)
             id += 1
 
 main()
