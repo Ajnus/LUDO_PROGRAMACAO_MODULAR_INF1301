@@ -2,7 +2,6 @@ import unittest
 from src.Tabuleiro import *
 
 class TestTabuleiro(unittest.TestCase):
-    pass
 
     def testeDefinirStatusCasaPassavel(self):
         print("Caso de teste 1 - casas passáveis do tabuleiro")
