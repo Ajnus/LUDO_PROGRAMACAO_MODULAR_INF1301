@@ -21,6 +21,11 @@ def main():
 
     # criar tabuleiro
     criarTabuleiro()
+
+    # mover tabuleiro
+    #moverTabuleiro()
+    #moverTabuleiro()
+
     root.mainloop()
 
 main()
