@@ -40,8 +40,7 @@ sBot = tk.PhotoImage(file=sBotPath)
 tabState = 0
 
 
-def criarTabuleiro(chamou=False):
-
+def criarTabuleiro():
 
     # Imagem Central
     tk.Label(image=imgCentro, width=150, height=150).place(x=298, y=298)
@@ -154,7 +153,6 @@ def criarTabuleiro(chamou=False):
     return 1
 
 def moverTabuleiro():
-    root = tk.Tk()
 
     global tabState
     global topLeft
@@ -178,7 +176,6 @@ def moverTabuleiro():
     global sTopPath
     global sRightPath
     global sBotPath
-
 
     # altera estado do tabuleiro
     tabState += 1
@@ -256,7 +253,7 @@ def moverTabuleiro():
         sBotPath = "Imagens\\paradaverde.gif"
 
     rotacionaCasaSaida()
-    criarTabuleiro(True)         # renderiza com as mudanças
+    criarTabuleiro()         # renderiza com as mudanças
     return 1
 
 def rotacionaCasaSaida():
