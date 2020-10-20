@@ -149,6 +149,9 @@ def criarTabuleiro():
         consertaCaixa = 1
         horizontal += 50
 
+    root.mainloop()
+    return 1
+
 def moverTabuleiro():
     global tabState
     global topLeft
@@ -250,7 +253,7 @@ def moverTabuleiro():
 
     rotacionaCasaSaida()
     criarTabuleiro()         # renderiza com as mudanças
-    return
+    return 1
 
 def rotacionaCasaSaida():
     global sLeft
