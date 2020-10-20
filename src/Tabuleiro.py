@@ -149,9 +149,6 @@ def criarTabuleiro():
         consertaCaixa = 1
         horizontal += 50
 
-    root.mainloop()
-    return 1
-
 def moverTabuleiro():
     global tabState
     global topLeft
@@ -253,7 +250,7 @@ def moverTabuleiro():
 
     rotacionaCasaSaida()
     criarTabuleiro()         # renderiza com as mudanças
-    return 1
+    return
 
 def rotacionaCasaSaida():
     global sLeft
@@ -287,5 +284,14 @@ def rotacionaCasaSaida():
     sBotR.save(sBotPath[:-4] + 'R' + ".gif")
     sBot = tk.PhotoImage(file=sBotPath[:-4] + 'R' + ".gif")
     return
+    
+    # Define todas as casas passáveis
+def definirStatusCasa(posicao):
+    if posicao < 57: #casas passáveis
+        return 0
+    if posicao == 57: # casa final
+        return 1
+    else:
+        return 2 
 
 #criarTabuleiro()
