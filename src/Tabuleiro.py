@@ -236,6 +236,7 @@ def moverTabuleiro():
         sTopPath  = "Imagens\\paradaamarelo.gif"
         sRightPath = "Imagens\\paradaverde.gif"
         sBotPath = "Imagens\\paradavermelho.gif"
+        
     elif tabState == 3:   # verde joga
         topLeft = tk.PhotoImage(file="Imagens\\basevermelho.gif")
         topRight = tk.PhotoImage(file="Imagens\\baseazul.gif")
@@ -287,6 +288,7 @@ def rotacionaCasaSaida():
     sBotR = sBotR.rotate(-90*tabState)
     sBotR.save(sBotPath[:-4] + 'R' + ".gif")
     sBot = tk.PhotoImage(file=sBotPath[:-4] + 'R' + ".gif")
+    
     return
 
     # Define todas as casas passáveis
