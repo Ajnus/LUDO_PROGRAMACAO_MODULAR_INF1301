@@ -17,7 +17,7 @@ sRightPath = "Imagens\\paradaazul.gif"
 sBotPath = "Imagens\\paradaamarelo.gif"
 
 # Carregando as imagens na posição default do tabuleiro, amarelo joga
-imgCentro = tk.PhotoImage(file="Imagens\\centro.gif")
+imgCentro = tk.PhotoImage(file=centroPath)
 imgCaixaBranco = tk.PhotoImage(file="Imagens\\caixabranco.gif")
 imgCaixaEstrela = tk.PhotoImage(file="Imagens\\caixaestrela.gif")
 
