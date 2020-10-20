@@ -22,7 +22,3 @@ def removeCor(cor):
     cores = base.peoesCoresDisponiveis
     cores.remove(cor)
     base.peoesCoresDisponiveis = cores
-
-if __name__ == '__main__':
-    criarPeoes()
-    print(base.peoesCadastrados)

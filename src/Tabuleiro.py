@@ -10,14 +10,14 @@ root.configure(background='black')
 root.title("Ludo - Grupo 5")  # Nome da Janela
 
 # Usado no futuro também para rotações
-centroPath =  "Imagens\\centro.gif"
+centroPath = "Imagens\\centro.gif"
 sLeftPath = "Imagens\\paradaverde.gif"
 sTopPath = "Imagens\\paradavermelho.gif"
 sRightPath = "Imagens\\paradaazul.gif"
 sBotPath = "Imagens\\paradaamarelo.gif"
 
 # Carregando as imagens na posição default do tabuleiro, amarelo joga
-imgCentro = tk.PhotoImage(file=centroPath)
+imgCentro = tk.PhotoImage(file="Imagens\\centro.gif")
 imgCaixaBranco = tk.PhotoImage(file="Imagens\\caixabranco.gif")
 imgCaixaEstrela = tk.PhotoImage(file="Imagens\\caixaestrela.gif")
 
@@ -32,7 +32,7 @@ cRight = tk.PhotoImage(file="Imagens\\caixaazul.gif")
 cBot = tk.PhotoImage(file="Imagens\\caixaamarelo.gif")
 
 sLeft = tk.PhotoImage(file=sLeftPath)
-sTop  = tk.PhotoImage(file=sTopPath)
+sTop = tk.PhotoImage(file=sTopPath)
 sRight = tk.PhotoImage(file=sRightPath)
 sBot = tk.PhotoImage(file=sBotPath)
 
@@ -40,7 +40,9 @@ sBot = tk.PhotoImage(file=sBotPath)
 tabState = 0
 
 
-def criarTabuleiro():
+def criarTabuleiro(chamou=False):
+
+
     # Imagem Central
     tk.Label(image=imgCentro, width=150, height=150).place(x=298, y=298)
 
@@ -149,10 +151,11 @@ def criarTabuleiro():
         consertaCaixa = 1
         horizontal += 50
 
-    root.mainloop()
     return 1
 
 def moverTabuleiro():
+    root = tk.Tk()
+
     global tabState
     global topLeft
     global topRight
@@ -175,6 +178,7 @@ def moverTabuleiro():
     global sTopPath
     global sRightPath
     global sBotPath
+
 
     # altera estado do tabuleiro
     tabState += 1
@@ -252,7 +256,7 @@ def moverTabuleiro():
         sBotPath = "Imagens\\paradaverde.gif"
 
     rotacionaCasaSaida()
-    criarTabuleiro()         # renderiza com as mudanças
+    criarTabuleiro(True)         # renderiza com as mudanças
     return 1
 
 def rotacionaCasaSaida():
@@ -287,7 +291,7 @@ def rotacionaCasaSaida():
     sBotR.save(sBotPath[:-4] + 'R' + ".gif")
     sBot = tk.PhotoImage(file=sBotPath[:-4] + 'R' + ".gif")
     return
-    
+
     # Define todas as casas passáveis
 def definirStatusCasa(posicao):
     if posicao < 57: #casas passáveis
@@ -295,6 +299,4 @@ def definirStatusCasa(posicao):
     if posicao == 57: # casa final
         return 1
     else:
-        return 2 
-
-#criarTabuleiro()
+        return 2

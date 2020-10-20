@@ -1,6 +1,8 @@
 from src.jogador import *
 from src.peao import *
-from db.base import *
+from src.Tabuleiro import *
+import tkinter as tk
+
 
 def main():
     #Criando e cadastrando peoes:
@@ -16,5 +18,9 @@ def main():
             removeCor(cor)
             armazenaJogador(id, nome, cor)
             id += 1
+
+    # criar tabuleiro
+    criarTabuleiro()
+    root.mainloop()
 
 main()
