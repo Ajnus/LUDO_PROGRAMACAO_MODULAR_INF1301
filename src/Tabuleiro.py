@@ -253,7 +253,7 @@ def moverTabuleiro():
 
     rotacionaCasaSaida()
     criarTabuleiro()         # renderiza com as mudanças
-    return
+    return 1
 
 def rotacionaCasaSaida():
     global sLeft
