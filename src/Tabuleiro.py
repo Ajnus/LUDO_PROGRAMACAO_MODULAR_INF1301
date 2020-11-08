@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image
+from db import base
 
 root = tk.Tk()
 
@@ -299,3 +300,13 @@ def definirStatusCasa(posicao):
         return 1
     else:
         return 2
+ 
+# Remove o peão do jogador
+def removerPeaoDoJogador(idJogador, idPeao):
+    cor = base.cadastraJogador[idJogador][1]
+    peoes = base.cadastraPeao[cor]
+    for peao in peoes:
+        if peao[0] == idPeao:
+            peoes.remove(peao)
+    
+
