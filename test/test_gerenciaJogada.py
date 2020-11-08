@@ -16,3 +16,15 @@ class TestDado(unittest.TestCase):
     def testPrimeiroJogadorListaVazia(self):
         resultado = definirPrimeiroJogador([])
         self.assertEqual(-1, resultado)
+        
+
+class TestDefineVencedor(unittest.TestCase):
+
+    def testeDefineVencedor(self):
+        print("Caso de teste 1 - -1 quando nao ha vencedor e a id quando ha vencedor")
+        retornoEsperado = defineVencedor(0)
+        if (retornoEsperado == -1)
+            self.assertEqual(retornoEsperado, -1)
+        else
+            self.assertEqual(retornoEsperado, 0)
+)
