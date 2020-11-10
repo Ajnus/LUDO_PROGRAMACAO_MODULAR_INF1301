@@ -1,3 +1,5 @@
 certifi==2020.6.20
 Pillow==8.0.0
+psycopg2==2.8.6
+SQLAlchemy @ file:///C:/ci/sqlalchemy_1603818968375/work
 wincertstore==0.2
