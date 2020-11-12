@@ -308,5 +308,12 @@ def removerPeaoDoJogador(idJogador, idPeao):
     for peao in peoes:
         if peao[0] == idPeao:
             peoes.remove(peao)
-    
 
+
+def moverParaBase(idPeao):
+    for Cpeoes in base.peoesCadastrados.values():
+        for peoes in Cpeoes:
+            if peoes[0] == idPeao:
+                peoes[1] = 0
+                print("Peão movido para base!")
+                return
