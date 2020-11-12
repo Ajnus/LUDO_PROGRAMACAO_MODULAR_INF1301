@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, BOOLEAN
 from sqlalchemy.orm import relationship
 from db.base import Base, db_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
@@ -26,18 +26,19 @@ class Tabuleiro(Base):
     __tablename__ = 'tabuleiro'
 
     casa = Column(Integer, primary_key=True)
-    status = Column(String)
+    status = Column(BOOLEAN, default=False) #false para vazia e true quando ocupada.
 
 
 
-primeiro_jogador = Jogador(codigo=171, nome='Paulo', corpeao='Vermelho')
+primeiro_jogador = Jogador(codigo=0, nome='Paulo', corpeao='Vermelho')
 primeiro_peao = Peao(codigo=1, cor='Vermelho', posicao=0)
-primeira_posicao = Tabuleiro(casa=0, status='Free')
+primeira_posicao = Tabuleiro(casa=2)
+
 
 session = Session()
-session.add(primeiro_jogador)
-session.add(primeiro_peao)
-session.add(primeira_posicao)
+session.add(Tabuleiro.status)
+#session.add(primeiro_peao)
+#session.add(primeira_posicao)
 
 try:
     session.commit()
