@@ -1,12 +1,10 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, BOOLEAN
+from sqlalchemy import Column, Integer, String, ForeignKey, BOOLEAN, and_, func
 from sqlalchemy.orm import relationship
 from db.base import Base, db_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 Base.metadata.create_all(db_engine)
 Session = scoped_session(sessionmaker(bind=db_engine, expire_on_commit=False))
-
-
 
 class Jogador(Base):
     __tablename__ = 'jogador'
@@ -29,21 +27,13 @@ class Tabuleiro(Base):
     status = Column(BOOLEAN, default=False) #false para vazia e true quando ocupada.
 
 
+def atualizarBD():
+    session = Session()
+    try:
+        session.commit()
+    except:
+        session.rollback()
+        raise
+    finally:
+        session.close()
 
-primeiro_jogador = Jogador(codigo=0, nome='Paulo', corpeao='Vermelho')
-primeiro_peao = Peao(codigo=1, cor='Vermelho', posicao=0)
-primeira_posicao = Tabuleiro(casa=2)
-
-
-session = Session()
-session.add(Tabuleiro.status)
-#session.add(primeiro_peao)
-#session.add(primeira_posicao)
-
-try:
-    session.commit()
-except:
-    session.rollback()
-    raise
-finally:
-    session.close()

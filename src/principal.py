@@ -5,27 +5,29 @@ import tkinter as tk
 
 
 def main():
+    session = Session()
     #Criando e cadastrando peoes:
-    criarPeoes()
+    if len(session.query(Peao.codigo).all()) < 16:
+        criarPeoes()
 
     #Criando e cadastrando jogadores
     cores = coresDisponiveis()
     numeroDeJogadores = 4
-    id = 0
-    while id < numeroDeJogadores:
-        cor, nome = cadastraJogador(cores)
+    jogadoresCadastrados = 0
+    while jogadoresCadastrados < numeroDeJogadores:
+        cor, nome, codigo = cadastraJogador(cores)
         if type(cor) == str:
             removeCor(cor)
-            armazenaJogador(id, nome, cor)
-            id += 1
+            armazenaJogador(codigo, nome, cor)
+            jogadoresCadastrados += 1
 
     # criar tabuleiro
-    criarTabuleiro()
+    #criarTabuleiro()
 
     # mover tabuleiro
     #moverTabuleiro()
     #moverTabuleiro()
 
-    root.mainloop()
+    #root.mainloop()
 
 main()

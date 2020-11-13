@@ -5,6 +5,4 @@ db_engine = create_engine('postgresql+psycopg2://postgres:123@localhost:5432/INF
 Base = declarative_base()
 Base.metadata.bind = db_engine
 
-jogadoresCadastrados = {}
 peoesCoresDisponiveis= ['Amarelo', 'Azul', 'Verde', 'Vermelho']
-peoesCadastrados = {}

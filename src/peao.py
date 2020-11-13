@@ -1,18 +1,25 @@
 from db import base
+from src.excecoes import InputError
+from db.dominioTabelas import Session, atualizarBD, Peao
 
 def criarPeoes():
+    excecao = InputError()
     cores = base.peoesCoresDisponiveis
-    id = 0
     posicao = 0
     for cor in cores:
-        listaIds = []
         for i in range(4):
-            listaIds.append([id, posicao])
-            id += 1
-        armazenaPeao(listaIds, cor)
+            codigo = excecao.gerarCodigoPeao()
+            armazenaPeao(codigo, cor, posicao)
 
-def armazenaPeao(listaId, corPeao):
-    base.peoesCadastrados[corPeao] = listaId
+def armazenaPeao(codigo, corPeao, posicao):
+    try:
+        session = Session()
+        peao = Peao(codigo=codigo, cor=corPeao, posicao=posicao)
+        session.add(peao)
+        atualizarBD()
+        return 0
+    except:
+        return 1
 
 def coresDisponiveis():
     cores = base.peoesCoresDisponiveis

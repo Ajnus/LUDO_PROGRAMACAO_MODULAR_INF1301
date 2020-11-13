@@ -1,11 +1,14 @@
 from src.excecoes import InputError
 from src.mensagem import *
-from db import base
+from db.dominioTabelas import Session, atualizarBD, Jogador
 
 def cadastraJogador(coresDisponiveis):
     indiceCor = 0
     repete = True
     excecao = InputError()
+
+    #gera codigo do jogador
+    codigo = excecao.gerarCodigoJogador()
 
     #captura nome válido do usuário
     while repete:
@@ -29,8 +32,14 @@ def cadastraJogador(coresDisponiveis):
             status = excecao.validaIntervalo(escolha, 1, len(coresDisponiveis))
             if status == 0:
                 cor = coresDisponiveis[escolha-1]
-                print("Jogador cadastrado com sucesso!\n")
-                return cor, nome
+                return cor, nome, codigo
 
-def armazenaJogador(id, nome, cor_peao):
-    base.jogadoresCadastrados[id] = nome, cor_peao
+def armazenaJogador(codigo, nome, corPeao):
+    try:
+        session = Session()
+        jogador = Jogador(codigo=codigo, nome=nome, corpeao=corPeao)
+        session.add(jogador)
+        atualizarBD()
+        return 0
+    except:
+        return 1

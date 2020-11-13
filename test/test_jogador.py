@@ -1,17 +1,27 @@
 import unittest
 from src.jogador import *
+from db.dominioTabelas import Session
+from src.excecoes import InputError
 
 class TestJogador(unittest.TestCase):
-
+    session = Session()
+    excecao = InputError()
 
     def testCadastraJogadorCorretamente(self):
+        codigo = self.excecao.gerarCodigoJogador()
         resultado = cadastraJogador(['Vermelho'])
-        self.assertEqual(('Vermelho', 'Luan'), resultado)
+        self.assertEqual(('Vermelho', 'Luan', codigo), resultado)
 
     def testArmazenarJogador(self):
-        armazenaJogador(7, 'Luan', 'Roxo')
-        resultado = base.jogadoresCadastrados
-        self.assertEqual(resultado[7], ('Luan', 'Roxo'))
+        codigo = self.excecao.gerarCodigoJogador()
+        print(codigo)
+        resultado = armazenaJogador(codigo, 'Luan', 'Roxo')
+        self.assertEqual(resultado, 0)
+
+    def testArmazenarJogadorComCodigoExistente(self):
+        codigo = self.excecao.gerarCodigoJogador() - 1
+        resultado = armazenaJogador(codigo, 'Luan', 'Roxo')
+        self.assertEqual(resultado, 1)
 
 
 if __name__ == '__main__':
