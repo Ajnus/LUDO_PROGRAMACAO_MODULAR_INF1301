@@ -1,4 +1,5 @@
-from db.dominioTabelas import*
+from db import base
+from db.dominioTabelas import Session, atualizarBD, Peao, Jogador
 from src.Tabuleiro import removerPeaoDoJogador
 
 def definirPrimeiroJogador(resultadoRolagemDado):
