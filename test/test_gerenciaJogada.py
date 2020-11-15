@@ -16,15 +16,34 @@ class TestDado(unittest.TestCase):
     def testPrimeiroJogadorListaVazia(self):
         resultado = definirPrimeiroJogador([])
         self.assertEqual(-1, resultado)
-        
 
-class TestDefineVencedor(unittest.TestCase):
+
+    def TesteRemoverJogadorRetorno1(self):
+        print("Caso de teste - remove jogador (retorno 1)")
+        retornoEsperado = removerJogador(0)
+        self.assertEqual(retornoEsperado, 1)
+
+    def TesteRemoverJogadorRetorno0(self):
+        print("Caso de teste - não remove jogador (retorno 0)")
+        retornoEsperado = removerJogador(555)
+        self.assertEqual(retornoEsperado, 0)
+
 
     def testeDefineVencedor(self):
-        print("Caso de teste 1 - -1 quando nao ha vencedor e a id quando ha vencedor")
-        retornoEsperado = defineVencedor(0)
-        if (retornoEsperado == -1)
-            self.assertEqual(retornoEsperado, -1)
-        else
-            self.assertEqual(retornoEsperado, 0)
-)
+        print("Caso de teste:  -1 quando nao ha vencedor e a id e o nome quando ha vencedor")
+        retornoEsperado = defineVencedor()
+        if retornoEsperado == (-1, -1):
+            self.assertEqual(retornoEsperado, (-1, -1))
+        else:
+            self.assertEqual(retornoEsperado, defineVencedor())
+
+
+    def testeVerificarVencedorRetorno1(self):
+        print("Caso de teste  - verifica se o jogador foi o vencedor (retorno 1)")
+        retornoEsperado = verificarVencedor(5)
+        self.assertEqual(retornoEsperado, 1)
+
+    def testeVerificarNaoVencedorRetorno0(self):
+        print("Caso de teste  - verifica se o jogador não foi o vencedor (retorno 0)")
+        retornoEsperado = verificarVencedor(3)
+        self.assertEqual(retornoEsperado, 0)

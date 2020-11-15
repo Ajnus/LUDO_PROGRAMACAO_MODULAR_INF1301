@@ -1,6 +1,6 @@
 import tkinter as tk
 from PIL import Image
-from db import base
+from db.dominioTabelas import *
 
 root = tk.Tk()
 
@@ -292,7 +292,7 @@ def rotacionaCasaSaida():
     
     return
 
-    # Define todas as casas passáveis
+# Define todas as casas passáveis
 def definirStatusCasa(posicao):
     if posicao < 57: #casas passáveis
         return 0
@@ -302,12 +302,16 @@ def definirStatusCasa(posicao):
         return 2
  
 # Remove o peão do jogador
-def removerPeaoDoJogador(idJogador, idPeao):
-    cor = base.cadastraJogador[idJogador][1]
-    peoes = base.cadastraPeao[cor]
-    for peao in peoes:
-        if peao[0] == idPeao:
-            peoes.remove(peao)
+def removerPeaoDoJogador(idPeao):
+    session = Session()
+    try:
+        peaoCodigo = session.query(Peao).filter_by(codigo = idPeao).one()
+        session.delete(peaoCodigo)
+        atualizarBD()
+        return 1
+    except:
+        peaoCodigo = 0
+        return 0
 
 
 def moverParaBase(idPeao):
