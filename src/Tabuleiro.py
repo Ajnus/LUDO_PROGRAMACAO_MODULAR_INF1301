@@ -153,7 +153,6 @@ def criarTabuleiro():
 
     return 1
 
-
 def moverTabuleiro():
 
     global tabState
@@ -203,7 +202,7 @@ def moverTabuleiro():
         cBot = tk.PhotoImage(file="Imagens\\caixaamarelo.gif")
 
         sLeftPath = "Imagens\\paradaverde.gif"
-        sTopPath = "Imagens\\paradavermelho.gif"
+        sTopPath  = "Imagens\\paradavermelho.gif"
         sRightPath = "Imagens\\paradaazul.gif"
         sBotPath = "Imagens\\paradaamarelo.gif"
 
@@ -219,7 +218,7 @@ def moverTabuleiro():
         cBot = tk.PhotoImage(file="Imagens\\caixaazul.gif")
 
         sLeftPath = "Imagens\\paradaamarelo.gif"
-        sTopPath = "Imagens\\paradaverde.gif"
+        sTopPath  = "Imagens\\paradaverde.gif"
         sRightPath = "Imagens\\paradavermelho.gif"
         sBotPath = "Imagens\\paradaazul.gif"
 
@@ -235,7 +234,7 @@ def moverTabuleiro():
         cBot = tk.PhotoImage(file="Imagens\\caixavermelho.gif")
 
         sLeftPath = "Imagens\\paradaazul.gif"
-        sTopPath = "Imagens\\paradaamarelo.gif"
+        sTopPath  = "Imagens\\paradaamarelo.gif"
         sRightPath = "Imagens\\paradaverde.gif"
         sBotPath = "Imagens\\paradavermelho.gif"
         
@@ -251,14 +250,13 @@ def moverTabuleiro():
         cBot = tk.PhotoImage(file="Imagens\\caixaverde.gif")
 
         sLeftPath = "Imagens\\paradavermelho.gif"
-        sTopPath = "Imagens\\paradaazul.gif"
+        sTopPath  = "Imagens\\paradaazul.gif"
         sRightPath = "Imagens\\paradaamarelo.gif"
         sBotPath = "Imagens\\paradaverde.gif"
 
     rotacionaCasaSaida()
     criarTabuleiro()         # renderiza com as mudanças
     return 1
-
 
 def rotacionaCasaSaida():
     global sLeft
@@ -294,22 +292,20 @@ def rotacionaCasaSaida():
     
     return
 
-
 # Define todas as casas passáveis
 def definirStatusCasa(posicao):
-    if posicao < 57:    # casas passáveis
+    if posicao < 57: #casas passáveis
         return 0
-    if posicao == 57:   # casa final
+    if posicao == 57: # casa final
         return 1
     else:
         return 2
  
-
 # Remove o peão do jogador
 def removerPeaoDoJogador(idPeao):
     session = Session()
     try:
-        peaoCodigo = session.query(Peao).filter_by(codigo=idPeao).one()
+        peaoCodigo = session.query(Peao).filter_by(codigo = idPeao).one()
         session.delete(peaoCodigo)
         atualizarBD()
         return 1

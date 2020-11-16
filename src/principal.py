@@ -1,16 +1,16 @@
 from src.jogador import *
 from src.peao import *
-from src.tabuleiro import *
+from src.Tabuleiro import *
 import tkinter as tk
 
 
 def main():
     session = Session()
-    # Criando e cadastrando peoes:
+    #Criando e cadastrando peoes:
     if len(session.query(Peao.codigo).all()) < 16:
         criarPeoes()
 
-    # Criando e cadastrando jogadores
+    #Criando e cadastrando jogadores
     cores = coresDisponiveis()
     numeroDeJogadores = 4
     jogadoresCadastrados = 0
@@ -29,6 +29,5 @@ def main():
     #moverTabuleiro()
 
     #root.mainloop()
-
 
 main()

@@ -2,7 +2,6 @@ from db import base
 from src.excecoes import InputError
 from db.dominioTabelas import Session, atualizarBD, Peao
 
-
 def criarPeoes():
     excecao = InputError()
     cores = base.peoesCoresDisponiveis
@@ -11,7 +10,6 @@ def criarPeoes():
         for i in range(4):
             codigo = excecao.gerarCodigoPeao()
             armazenaPeao(codigo, cor, posicao)
-
 
 def armazenaPeao(codigo, corPeao, posicao):
     try:
@@ -23,11 +21,9 @@ def armazenaPeao(codigo, corPeao, posicao):
     except:
         return 1
 
-
 def coresDisponiveis():
     cores = base.peoesCoresDisponiveis
     return cores
-
 
 def removeCor(cor):
     cores = base.peoesCoresDisponiveis

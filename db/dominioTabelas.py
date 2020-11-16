@@ -6,14 +6,12 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 Base.metadata.create_all(db_engine)
 Session = scoped_session(sessionmaker(bind=db_engine, expire_on_commit=False))
 
-
 class Jogador(Base):
     __tablename__ = 'jogador'
 
     codigo = Column(Integer, primary_key=True)
     nome = Column(String)
     corpeao = Column(String)
-
 
 class Peao(Base):
     __tablename__ = 'peao'
@@ -22,13 +20,11 @@ class Peao(Base):
     cor = Column(String)
     posicao = Column(Integer)
 
-
 class Tabuleiro(Base):
     __tablename__ = 'tabuleiro'
 
     casa = Column(Integer, primary_key=True)
-    statusCasa = Column(BOOLEAN, default=False)     # false para vazia e true quando ocupada.
-    tabState = Column(Integer, default=0)           # +1 = + 90º horário
+    status = Column(BOOLEAN, default=False) #false para vazia e true quando ocupada.
 
 
 def atualizarBD():
@@ -40,3 +36,4 @@ def atualizarBD():
         raise
     finally:
         session.close()
+

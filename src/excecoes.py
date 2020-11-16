@@ -1,10 +1,8 @@
 from src.mensagem import *
 from db.dominioTabelas import Session, Jogador, Peao
 
-
 class Error(Exception):
     pass
-
 
 class InputError(Error):
     def __init__(self, message=''):
@@ -12,7 +10,7 @@ class InputError(Error):
 
     def validaIntervalo(self, numero, minimo, maximo):
         try:
-            if numero < minimo or numero > maximo:
+            if  numero < minimo or numero > maximo:
                 raise InputError(f'Escolha inválida!\n'
                                  f'Escolha um numero entre {minimo} e {maximo}\n')
             status = 0
@@ -53,9 +51,7 @@ class InputError(Error):
     def gerarCodigoJogador(self):
         session = Session()
         try:
-            # pega o ultimo codigo de jogador cadastrado no BD e soma 1
-            codigo = session.query(Jogador.codigo).all()[-1][0] + 1
-
+            codigo = session.query(Jogador.codigo).all()[-1][0] + 1  # pega o ultimo codigo de jogador cadastrado no BD e soma 1
         except:
             codigo = 0
 
@@ -64,9 +60,7 @@ class InputError(Error):
     def gerarCodigoPeao(self):
         session = Session()
         try:
-            # pega o ultimo codigo de jogador cadastrado no BD e soma 1
-            codigo = session.query(Peao.codigo).all()[-1][0] + 1
-
+            codigo = session.query(Peao.codigo).all()[-1][0] + 1  # pega o ultimo codigo de jogador cadastrado no BD e soma 1
         except:
             codigo = 0
 
