@@ -3,13 +3,18 @@ from src.excecoes import InputError
 from db.dominioTabelas import Session, atualizarBD, Peao
 
 def criarPeoes():
-    excecao = InputError()
-    cores = base.peoesCoresDisponiveis
-    posicao = 0
-    for cor in cores:
-        for i in range(4):
-            codigo = excecao.gerarCodigoPeao()
-            armazenaPeao(codigo, cor, posicao)
+    try:
+        excecao = InputError()
+        cores = base.peoesCoresDisponiveis
+        posicao = 0
+        for cor in cores:
+            for i in range(4):
+                codigo = excecao.gerarCodigoPeao()
+                armazenaPeao(codigo, cor, posicao)
+        return 0
+
+    except:
+        return 1
 
 def armazenaPeao(codigo, corPeao, posicao):
     try:
