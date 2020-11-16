@@ -1,6 +1,7 @@
 from db import base
 from db.dominioTabelas import Session, atualizarBD, Peao, Jogador
-from src.Tabuleiro import removerPeaoDoJogador
+from src.tabuleiro import removerPeaoDoJogador
+
 
 def definirPrimeiroJogador(resultadoRolagemDado):
     id = maior = 0
@@ -24,6 +25,7 @@ def definirPrimeiroJogador(resultadoRolagemDado):
         return empate
     return primeiroJogador
 
+
 # Remove o jogador
 def removerJogador(idJogador):
     session = Session()
@@ -35,6 +37,7 @@ def removerJogador(idJogador):
     except:
         peaoCodigo = 0
         return 0
+
 
 # define o vencedor
 def defineVencedor():
@@ -74,6 +77,7 @@ def defineVencedor():
             return idVencedor, nomeVencedor
         j+=1
     return (-1, -1)
+
 
 # verifica vencedor
 def verificarVencedor(idJogador):
