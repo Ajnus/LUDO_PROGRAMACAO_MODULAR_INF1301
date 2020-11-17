@@ -86,5 +86,11 @@ def verificarVencedor(idJogador):
         return 0
     return 1
 
-def armezenaOrdem(ordem):
-    ordem[4] = list(ordem)
+def armezenaOrdem(ordemJ):
+    lOrdem=[]
+
+    i=0
+    for player in ordemJ:
+        if (ordemJ[i] == '0' or ordemJ[i] == '1' or ordemJ[i] == '2' or ordemJ[i] == '3'):
+            lOrdem.append(ordemJ[i])
+        i+=1

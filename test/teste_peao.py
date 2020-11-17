@@ -6,7 +6,7 @@ class TestePeao(unittest.TestCase):
 
     def testeCoresDisponiveis(self):
         resultado = coresDisponiveis()
-        self.assertEqual(resultado, ['Amarelo', 'Azul', 'Verde', 'Roxo'])
+        self.assertEqual(resultado, ['Amarelo', 'Azul', 'Verde', 'Vermelho'])
 
     def testeCriarPeoes(self):
         resultado = criarPeoes()
@@ -19,4 +19,4 @@ class TestePeao(unittest.TestCase):
     def testeRemoverCor(self):
         removeCor('Verde')
         resultado = coresDisponiveis()
-        self.assertEqual(resultado, ['Amarelo', 'Azul', 'Roxo'])
+        self.assertEqual(resultado, ['Amarelo', 'Azul', 'Vermelho'])
