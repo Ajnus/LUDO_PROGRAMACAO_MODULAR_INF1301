@@ -15,7 +15,7 @@ for i in range(16):  #Ajustar para a quantidade exata de peos no jogo
     ET.SubElement(posPeos,'Peão_{}'.format(i), pos = str(posiPeao), id = str(i))
 
 for i in range(1,77):
-    statusC = session.query(Tabuleiro.status).filter_by(casa = i).one()[0]
+    statusC = session.query(Tabuleiro.statusCasa).filter_by(casa = i).one()[0]
     ET.SubElement(statusCasa,'Casa_{}'.format(i), status = str(statusC))
 
 for i in range(4):

@@ -5,12 +5,18 @@ import tkinter as tk
 
 
 def main():
+
     session = Session()
-    # Criando e cadastrando peoes:
+
+    #Criando tabuleiro
+    if len(session.query(Tabuleiro.casa).all()) < 76:
+        criarCasasTabuleiro()
+
+    #Criando e cadastrando peoes:
     if len(session.query(Peao.codigo).all()) < 16:
         criarPeoes()
 
-    # Criando e cadastrando jogadores
+    #Criando e cadastrando jogadores
     cores = coresDisponiveis()
     numeroDeJogadores = 4
     jogadoresCadastrados = 0

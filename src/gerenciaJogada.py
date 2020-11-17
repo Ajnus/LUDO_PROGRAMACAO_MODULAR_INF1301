@@ -83,5 +83,5 @@ def defineVencedor():
 def verificarVencedor(idJogador):
     vencedor = defineVencedor()
     if idJogador == vencedor[0]:
-        return 2
+        return 0
     return 1
