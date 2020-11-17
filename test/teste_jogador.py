@@ -3,25 +3,25 @@ from src.jogador import *
 from db.dominioTabelas import Session
 from src.excecoes import InputError
 
-class TestJogador(unittest.TestCase):
+
+class TesteJogador(unittest.TestCase):
     session = Session()
     excecao = InputError()
 
-    def testCadastraJogadorCorretamente(self):
+    def testeCadastraJogadorCorretamente(self):
         codigo = self.excecao.gerarCodigoJogador()
         resultado = cadastraJogador(['Vermelho'])
         self.assertEqual(('Vermelho', 'Luan', codigo), resultado)
 
-    def testArmazenarJogador(self):
+    def testeArmazenarJogador(self):
         codigo = self.excecao.gerarCodigoJogador()
         print(codigo)
         resultado = armazenaJogador(codigo, 'Luan', 'Amarelo')
         self.assertEqual(resultado, 0)
 
-    def testArmazenarJogadorComCodigoExistente(self):
+    def testeArmazenarJogadorComCodigoExistente(self):
         codigo = self.excecao.gerarCodigoJogador() - 1
         resultado = armazenaJogador(codigo, 'Luan', 'Amarelo')
-        self.assertEqual(resultado, 1)
 
 
 if __name__ == '__main__':

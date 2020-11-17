@@ -1,20 +1,22 @@
 from src.peao import *
 import unittest
-class TestPeao(unittest.TestCase):
 
-    def testCoresDisponiveis(self):
+
+class TestePeao(unittest.TestCase):
+
+    def testeCoresDisponiveis(self):
         resultado = coresDisponiveis()
         self.assertEqual(resultado, ['Amarelo', 'Azul', 'Verde', 'Vermelho'])
 
-    def testCriarPeoes(self):
+    def testeCriarPeoes(self):
         resultado = criarPeoes()
         self.assertEqual(resultado, 0)
 
-    def testArmazenarPeao(self):
+    def testeArmazenarPeao(self):
         resultado = armazenaPeao(22, 'Azul', 3)
         self.assertEqual(resultado, 0)
 
-    def testRemoverCor(self):
+    def testeRemoverCor(self):
         removeCor('Verde')
         resultado = coresDisponiveis()
         self.assertEqual(resultado, ['Amarelo', 'Azul', 'Vermelho'])

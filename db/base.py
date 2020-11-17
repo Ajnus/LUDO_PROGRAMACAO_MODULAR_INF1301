@@ -5,4 +5,4 @@ db_engine = create_engine('postgresql+psycopg2://root:root@localhost:5432/INF130
 Base = declarative_base()
 Base.metadata.bind = db_engine
 
-peoesCoresDisponiveis= ['Amarelo', 'Azul', 'Verde', 'Vermelho']
+peoesCoresDisponiveis = ['Amarelo', 'Azul', 'Verde', 'Vermelho']

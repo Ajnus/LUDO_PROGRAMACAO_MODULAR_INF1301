@@ -1,7 +1,9 @@
 from db import base
 from src.gerenciaPeao import *
 import unittest
-class TestPeao(unittest.TestCase):
+
+
+class TestePeao(unittest.TestCase):
 
     def testeContarPeaoNaBase(self):
         resultado = contarPeaoNaBase(0)

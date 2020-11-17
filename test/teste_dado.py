@@ -1,8 +1,10 @@
 import unittest
 from src.dado import *
 
-class TestDado(unittest.TestCase):
+
+class TesteDado(unittest.TestCase):
     dado = criarDado()
+
     def testeCriarDado1(self):
         print("Teste Dado 1")
         self.assertEqual(self.dado[0], 1)
@@ -27,10 +29,10 @@ class TestDado(unittest.TestCase):
         print("Teste Dado 6")
         self.assertEqual(self.dado[5], 6)
         
-    def testaRolarDados(self):
+    def testeRolarDados(self):
         dado = criarDado()
         rolar = rolarDado(dado)
-        self.assertTrue(rolar >= 1 and rolar <= 6)
+        self.assertTrue(1 <= rolar <= 6)
 
 
 if __name__ == '__main__':
