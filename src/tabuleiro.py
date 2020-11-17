@@ -331,9 +331,14 @@ def moverParaBase(idPeao):
         posPeao = -1
         return 1
 
-def criarCasasTabuleiro():
+def criarCasasTabuleiro(statusCasa):
     session = Session()
+    #if (statusCasa == "False"):  # SQLAlchemy não aceita mais string como Boolean
+     #   statusCasa=bool(0)
+    #elif (statusCasa == "True"):
+     #   statusCasa=bool(1)
+
     for casa in range(1, 77):
-        tabuleiro = Tabuleiro(casa=casa)
+        tabuleiro = Tabuleiro(casa=casa, statusCasa=statusCasa)
         session.add(tabuleiro)
         atualizarBD()

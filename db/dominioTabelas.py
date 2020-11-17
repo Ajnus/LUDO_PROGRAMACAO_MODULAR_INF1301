@@ -27,8 +27,8 @@ class Tabuleiro(Base):
     __tablename__ = 'tabuleiro'
 
     casa = Column(Integer, primary_key=True)
-    statusCasa = Column(BOOLEAN, default=False)     # false para vazia e true quando ocupada.
-    tabState = Column(Integer, default=0)           # +1 = + 90º horário
+    statusCasa = Column(String, default=False)     # false para vazia e true quando ocupada.
+    #tabState = Column(Integer, default=0)           # +1 = + 90º horário
 
 
 def atualizarBD():

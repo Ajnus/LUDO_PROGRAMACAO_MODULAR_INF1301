@@ -85,3 +85,6 @@ def verificarVencedor(idJogador):
     if idJogador == vencedor[0]:
         return 0
     return 1
+
+def armezenaOrdem(ordem):
+    ordem[4] = list(ordem)
