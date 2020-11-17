@@ -24,7 +24,8 @@ for i in range(16):  #Ajustar para a quantidade exata de peos no jogo
 
 for i in range(1,77):
     statusC = session.query(Tabuleiro.statusCasa).filter_by(casa = i).one()[0]
-    ET.SubElement(statusCasa,'Casa_{}'.format(i), status = str(statusC))
+    tabSState = session.query(Tabuleiro.tabState).all()[-i][0]
+    ET.SubElement(statusCasa,'Casa_{}'.format(i), status = str(statusC), tabState=str(tabSState))
 
 for i in range(4):
     codJ = session.query(Jogador.codigo).all()[-1-i][0]
