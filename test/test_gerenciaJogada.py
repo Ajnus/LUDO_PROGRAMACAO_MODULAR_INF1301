@@ -38,12 +38,12 @@ class TestDado(unittest.TestCase):
             self.assertEqual(retornoEsperado, defineVencedor())
 
 
-    def testeVerificarVencedorRetorno1(self):
+    def testeVerificarVencedorRetorno0(self):
         print("Caso de teste  - verifica se o jogador foi o vencedor (retorno 1)")
-        retornoEsperado = verificarVencedor(5)
-        self.assertEqual(retornoEsperado, 1)
-
-    def testeVerificarNaoVencedorRetorno0(self):
-        print("Caso de teste  - verifica se o jogador não foi o vencedor (retorno 0)")
         retornoEsperado = verificarVencedor(3)
         self.assertEqual(retornoEsperado, 0)
+
+    def testeVerificarNaoVencedorRetorno1(self):
+        print("Caso de teste  - verifica se o jogador não foi o vencedor (retorno 0)")
+        retornoEsperado = verificarVencedor(2)
+        self.assertEqual(retornoEsperado, 1)

@@ -15,12 +15,12 @@ class TestJogador(unittest.TestCase):
     def testArmazenarJogador(self):
         codigo = self.excecao.gerarCodigoJogador()
         print(codigo)
-        resultado = armazenaJogador(codigo, 'Luan', 'Roxo')
+        resultado = armazenaJogador(codigo, 'Luan', 'Amarelo')
         self.assertEqual(resultado, 0)
 
     def testArmazenarJogadorComCodigoExistente(self):
         codigo = self.excecao.gerarCodigoJogador() - 1
-        resultado = armazenaJogador(codigo, 'Luan', 'Roxo')
+        resultado = armazenaJogador(codigo, 'Luan', 'Amarelo')
         self.assertEqual(resultado, 1)
 
 
