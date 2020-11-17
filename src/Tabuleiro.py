@@ -321,3 +321,10 @@ def moverParaBase(idPeao):
                 peoes[1] = 0
                 print("Peão movido para base!")
                 return
+
+def criarCasasTabuleiro():
+    session = Session()
+    for casa in range(1, 77):
+        tabuleiro = Tabuleiro(casa=casa)
+        session.add(tabuleiro)
+        atualizarBD()
