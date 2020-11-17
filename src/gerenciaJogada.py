@@ -57,7 +57,7 @@ def defineVencedor():
         jogadorId = -1
 
     for posicao in peaoPosicao:
-        if posicao[0] >= 57:
+        if posicao[0] > 72:
             removerPeaoDoJogador(idPeao[i][0])
             atualizarBD()
         i+=1
@@ -83,7 +83,5 @@ def defineVencedor():
 def verificarVencedor(idJogador):
     vencedor = defineVencedor()
     if idJogador == vencedor[0]:
-        print(vencedor[1])
-        #removerJogador(idJogador)
-        return 1
-    return 0
+        return 2
+    return 1
