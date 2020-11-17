@@ -321,12 +321,12 @@ def removerPeaoDoJogador(idPeao):
 
 
 def moverParaBase(idPeao):
-    for Cpeoes in base.peoesCadastrados.values():	    session = Session()
-        for peoes in Cpeoes:	    try:
-            if peoes[0] == idPeao:	        posPeao = session.query(Peao).filter_by(codigo=idPeao).one()
-                peoes[1] = 0	        posPeao.posicao = 0
-                print("Peão movido para base!")	        atualizarBD()
-                return	        return 0
+    session = Session()
+    try:
+        posPeao = session.query(Peao).filter_by(codigo=idPeao).one()
+        posPeao.posicao = 0
+        atualizarBD()
+        return 0
     except:
         posPeao = -1
         return 1
