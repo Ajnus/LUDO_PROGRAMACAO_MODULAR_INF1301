@@ -5,7 +5,13 @@ import tkinter as tk
 
 
 def main():
+
     session = Session()
+
+    #Criando tabuleiro
+    if len(session.query(Tabuleiro.casa).all()) < 76:
+        criarCasasTabuleiro()
+
     #Criando e cadastrando peoes:
     if len(session.query(Peao.codigo).all()) < 16:
         criarPeoes()
