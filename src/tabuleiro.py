@@ -330,3 +330,10 @@ def moverParaBase(idPeao):
     except:
         posPeao = -1
         return 1
+
+def criarCasasTabuleiro():
+    session = Session()
+    for casa in range(1, 77):
+        tabuleiro = Tabuleiro(casa=casa)
+        session.add(tabuleiro)
+        atualizarBD()
