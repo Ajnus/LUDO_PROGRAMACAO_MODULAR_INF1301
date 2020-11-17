@@ -1,6 +1,6 @@
 from src.jogador import *
 from src.peao import *
-from src.tabuleiro import *
+from src.Tabuleiro import *
 import tkinter as tk
 
 
