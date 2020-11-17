@@ -2,6 +2,8 @@ import tkinter as tk
 from PIL import Image
 from db.dominioTabelas import *
 
+#Erro na parte gráfica, verificar!
+'''
 root = tk.Tk()
 
 # Permite o usuario mudar o tamanho da tela
@@ -291,7 +293,7 @@ def rotacionaCasaSaida():
     sBot = tk.PhotoImage(file=sBotPath[:-4] + 'R' + ".gif")
     
     return
-
+'''
 # Define todas as casas passáveis
 def definirStatusCasa(posicao):
     if posicao < 57: #casas passáveis
@@ -315,12 +317,15 @@ def removerPeaoDoJogador(idPeao):
 
 
 def moverParaBase(idPeao):
-    for Cpeoes in base.peoesCadastrados.values():
-        for peoes in Cpeoes:
-            if peoes[0] == idPeao:
-                peoes[1] = 0
-                print("Peão movido para base!")
-                return
+    session = Session()
+    try:
+        posPeao = session.query(Peao).filter_by(codigo=idPeao).one()
+        posPeao.posicao = 0
+        atualizarBD()
+        return 0
+    except:
+        posPeao = -1
+        return 1
 
 def criarCasasTabuleiro():
     session = Session()

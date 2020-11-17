@@ -4,11 +4,11 @@ import unittest
 class TestPeao(unittest.TestCase):
 
     def testeContarPeaoNaBase(self):
-        resultado = contarPeaoNaBase(3)
+        resultado = contarPeaoNaBase(0)
         self.assertEqual(resultado, (4, [0, 1, 2, 3]))
 
     def testeContarPeaoNaBaseZeroPeao(self):
-        resultado = contarPeaoNaBase(4)
+        resultado = contarPeaoNaBase(3)
         self.assertEqual(resultado, (0, []))
 
     def testeContarPeaoNaBaseCodigoNaoRegistrado(self):
