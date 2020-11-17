@@ -1,13 +1,14 @@
-from src.Tabuleiro import *
+from src.tabuleiro import *
 import unittest
 
-class TestTabuleiro(unittest.TestCase):
+
+class TesteTabuleiro(unittest.TestCase):
 
     def testeCriarTabuleiro(self):
         resultado = criarTabuleiro()
         self.assertEqual(1, resultado)
 
-    def testeMoverTabuleiro(self): # teste a função na n+1-ésima posição
+    def testeMoverTabuleiro(self):  # teste a função na n+1-ésima posição
         resultado = moverTabuleiro()
         self.assertEqual(1, resultado)
 
@@ -26,12 +27,12 @@ class TestTabuleiro(unittest.TestCase):
         retornoEsperado = definirStatusCasa(60)
         self.assertEqual(retornoEsperado, 2)
         
-    def TesteRemoverPeaoRetorno1(self):
+    def testeRemoverPeaoRetorno1(self):
         print("Caso de teste - remove peao (retorno 1)")
         retornoEsperado = removerPeaoDoJogador(2)
         self.assertEqual(retornoEsperado, 1)
 
-    def TesteRemoverPeaoRetorno0(self):
+    def testeRemoverPeaoRetorno0(self):
         print("Caso de teste - não remove peao (retorno 0)")
         retornoEsperado = removerPeaoDoJogador(555)
         self.assertEqual(retornoEsperado, 0)
