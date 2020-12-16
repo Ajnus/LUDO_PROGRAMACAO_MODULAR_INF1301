@@ -30,7 +30,7 @@ class TesteTabuleiro(unittest.TestCase):
         self.assertEqual(retornoEsperado, 2)
 
     def testeAlterarStatusCasa(self):
-        resultado = alteraStatusCasa(60, True)
+        resultado = alteraStatusCasa(60)
         self.assertEqual(resultado, 0)
         
     def testeRemoverPeaoRetorno1(self):
