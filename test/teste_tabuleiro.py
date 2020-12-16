@@ -32,6 +32,18 @@ class TesteTabuleiro(unittest.TestCase):
     def testeAlterarStatusCasa(self):
         resultado = alteraStatusCasa(60)
         self.assertEqual(resultado, 0)
+
+    def testeAlterarStatusCasaIdInexistente(self):
+        resultado = alteraStatusCasa(222)
+        self.assertEqual(resultado, 1)
+
+    def testeVerificarStatusCasa(self):
+        resultado = verificarStatusCasa(76)
+        self.assertEqual(resultado, False)
+
+    def testeVerificarStatusCasaIdInexistente(self):
+        resultado = verificarStatusCasa(222)
+        self.assertEqual(resultado, 1)
         
     def testeRemoverPeaoRetorno1(self):
         print("Caso de teste - remove peao (retorno 1)")

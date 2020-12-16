@@ -349,15 +349,23 @@ def armazenaStatusCasaTabState(casa, statusCasa, tabState):
     except:
         return 1
 
-def alteraStatusCasa(casa):
+def alteraStatusCasa(idCasa):
     try:
         session = Session()
-        statusCasaAtual = session.query(Tabuleiro).filter(Tabuleiro.casa == casa).one()
+        statusCasaAtual = session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).one()
         if statusCasaAtual.statusCasa == False:
-            session.query(Tabuleiro).filter(Tabuleiro.casa == casa).update({'statusCasa': True})
+            session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).update({'statusCasa': True})
         else:
-            session.query(Tabuleiro).filter(Tabuleiro.casa == casa).update({'statusCasa': False})
+            session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).update({'statusCasa': False})
         atualizarBD()
         return 0
+    except:
+        return 1
+
+def verificarStatusCasa(idCasa):
+    try:
+        session = Session()
+        casa = session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).one()
+        return casa.statusCasa
     except:
         return 1
