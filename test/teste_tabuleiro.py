@@ -28,6 +28,10 @@ class TesteTabuleiro(unittest.TestCase):
         print("Caso de teste 3 - casa fora do tabuleiro")
         retornoEsperado = definirStatusCasa(60)
         self.assertEqual(retornoEsperado, 2)
+
+    def testeAlterarStatusCasa(self):
+        resultado = alteraStatusCasa(60, True)
+        self.assertEqual(resultado, 0)
         
     def testeRemoverPeaoRetorno1(self):
         print("Caso de teste - remove peao (retorno 1)")
