@@ -11,7 +11,7 @@ def criarPeoes():
         for cor in cores:
             for i in range(4):
                 codigo = excecao.gerarCodigoPeao()
-                print(armazenaPeao(codigo, cor, posicao))
+                armazenaPeao(codigo, cor, posicao)
         return 0
 
     except:

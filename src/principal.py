@@ -2,6 +2,7 @@ from src.jogador import *
 from src.peao import *
 from src.partida import *
 from src.tabuleiro import *
+from src.gerenciaJogada import *
 import tkinter as tk
 from db.dominioTabelas import Session
 from db.dominioTabelas import Partida
@@ -35,17 +36,10 @@ def main():
 
 
     #Criando tabuleiro
-    if len(session.query(Tabuleiro.casa).all()) < 76:
+    if len(session.query(Tabuleiro.casa).all()) < 92:
         criarCasasTabuleiro()
 
-    # criar tabuleiro
-    #criarTabuleiro()
-
-    # mover tabuleiro
-    #moverTabuleiro()
-    #moverTabuleiro()
-
-    #root.mainloop()
+    ordemJogador()
 
 
 
