@@ -371,7 +371,7 @@ def criarCasasTabuleiro():
 def armazenaStatusCasaTabState(casa, statusCasa, tabState):
     try:
         session = Session()
-        statusState = Tabuleiro(casa=casa, statusCasa=statusCasa, tabState=tabState)
+        statusState = Tabuleiro(casa=casa, statuscasa=statusCasa, tabstate=tabState)
         session.add(statusState)
         atualizarBD()
         return 0
@@ -383,10 +383,10 @@ def alteraStatusCasa(idCasa):
     try:
         session = Session()
         statusCasaAtual = session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).one()
-        if statusCasaAtual.statusCasa == False:
-            session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).update({'statusCasa': True})
+        if statusCasaAtual.statuscasa == False:
+            session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).update({'statuscasa': True})
         else:
-            session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).update({'statusCasa': False})
+            session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).update({'statuscasa': False})
         atualizarBD()
         return 0
     except:
@@ -397,7 +397,7 @@ def verificarStatusCasa(idCasa):
     try:
         session = Session()
         casa = session.query(Tabuleiro).filter(Tabuleiro.casa == idCasa).one()
-        return casa.statusCasa
+        return casa.statuscasa
     except:
         return 1
 

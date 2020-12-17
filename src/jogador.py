@@ -36,10 +36,10 @@ def cadastraJogador(coresDisponiveis):
                 return cor, nome, codigo
 
 
-def armazenaJogador(codigo, nome, corPeao):
+def armazenaJogador(codigo, nome, corPeao, numpartida, vencedor=False):
     try:
         session = Session()
-        jogador = Jogador(codigo=codigo, nome=nome, corpeao=corPeao)
+        jogador = Jogador(codigo=codigo, nome=nome, vencedor=vencedor, corpeao=corPeao, numpartida=numpartida)
         session.add(jogador)
         atualizarBD()
         return 0

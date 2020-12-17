@@ -11,23 +11,22 @@ def criarPeoes():
         for cor in cores:
             for i in range(4):
                 codigo = excecao.gerarCodigoPeao()
-                armazenaPeao(codigo, cor, posicao)
+                print(armazenaPeao(codigo, cor, posicao))
         return 0
 
     except:
         return 1
 
 
-def armazenaPeao(codigo, corPeao, posicao):
+def armazenaPeao(codigo, corPeao, posicao, nojogo=True):
     try:
         session = Session()
-        peao = Peao(codigo=codigo, cor=corPeao, posicao=posicao)
+        peao = Peao(codigo=codigo, cor=corPeao, posicao=posicao, nojogo=nojogo)
         session.add(peao)
         atualizarBD()
         return 0
     except:
         return 1
-
 
 def coresDisponiveis():
     cores = base.peoesCoresDisponiveis

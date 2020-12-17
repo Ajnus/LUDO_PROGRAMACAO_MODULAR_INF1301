@@ -1,5 +1,5 @@
 from src.mensagem import *
-from db.dominioTabelas import Session, Jogador, Peao
+from db.dominioTabelas import Session, Jogador, Peao, Partida
 
 
 class Error(Exception):
@@ -66,6 +66,17 @@ class InputError(Error):
         try:
             # pega o ultimo codigo de jogador cadastrado no BD e soma 1
             codigo = session.query(Peao.codigo).all()[-1][0] + 1
+
+        except:
+            codigo = 0
+
+        return codigo
+
+    def gerarCodigoPartida(self):
+        session = Session()
+        try:
+            # pega o ultimo codigo de partida cadastrado no BD e soma 1
+            codigo = session.query(Partida.codigo).all()[-1][0] + 1
 
         except:
             codigo = 0
