@@ -3,27 +3,13 @@ from db.dominioTabelas import Session, atualizarBD, Peao, Jogador
 from src.tabuleiro import removerPeaoDoJogador
 
 
-def definirPrimeiroJogador(resultadoRolagemDado):
-    id = maior = 0
-    numeroSorteado = 1
-    primeiroJogador = -1
-    empate = []
-
-    for jogador in resultadoRolagemDado:
-        if jogador[numeroSorteado] > maior:
-            maior = jogador[numeroSorteado]
-            primeiroJogador = jogador[id]
-            empate = []
-
-        elif jogador[numeroSorteado] == maior:
-            maior = jogador[numeroSorteado]
-            if primeiroJogador not in empate:
-                empate.append(primeiroJogador)
-            empate.append(jogador[id])
-
-    if len(empate) != 0:
-        return empate
-    return primeiroJogador
+#ordena os jogadores
+def ordemJogador(resultadoRolagemDados):
+    resultadoRolagemDados.sort(reverse=True)
+    ordem = []
+    for maior in resultadoRolagemDados:
+        ordem.append(maior[1])
+    return ordem
 
 
 # Remove o jogador
@@ -86,11 +72,12 @@ def verificarVencedor(idJogador):
         return 0
     return 1
 
-def armezenaOrdem(ordemJ):
-    lOrdem=[]
-
-    i=0
-    for player in ordemJ:
-        if (ordemJ[i] == '0' or ordemJ[i] == '1' or ordemJ[i] == '2' or ordemJ[i] == '3'):
-            lOrdem.append(ordemJ[i])
-        i+=1
+#chama próximo jogador
+def chamarProximoJogador(idJogador, ordem):
+    for i in range(len(ordem)):
+        if ordem[i] == idJogador:
+            if i == len(ordem) - 1:
+                return ordem[0]
+            else:
+                return ordem[i + 1]
+    return -1

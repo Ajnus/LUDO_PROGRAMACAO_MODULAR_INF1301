@@ -4,17 +4,13 @@ import unittest
 
 class TesteDado(unittest.TestCase):
 
-    def testePrimeiroJogadorId2(self):
-        resultado = definirPrimeiroJogador([(0, 2), (1, 2), (2, 4), (3, 2)])
-        self.assertEqual(2, resultado)
+    def testeOrdemJogador1(self):
+        resultado = ordemJogador([(2, 0), (2, 1), (4, 2), (2, 3)])
+        self.assertEqual([2, 3, 1, 0], resultado)
 
-    def testePrimeiroJogadorEmpate(self):
-        resultado = definirPrimeiroJogador([(0, 4), (1, 3), (2, 4), (3, 4)])
-        self.assertEqual([0, 2, 3], resultado)
-
-    def testePrimeiroJogadorListaVazia(self):
-        resultado = definirPrimeiroJogador([])
-        self.assertEqual(-1, resultado)
+    def testeOrdemJogador2(self):
+        resultado = ordemJogador([(4, 0), (3, 1), (4, 2), (4, 3)])
+        self.assertEqual([3, 2, 0, 1], resultado)
 
     def testeRemoverJogadorRetorno1(self):
         print("Caso de teste - remove jogador (retorno 1)")
@@ -43,3 +39,18 @@ class TesteDado(unittest.TestCase):
         print("Caso de teste  - verifica se o jogador não foi o vencedor (retorno 1)")
         retornoEsperado = verificarVencedor(2)
         self.assertEqual(retornoEsperado, 1)
+
+    def testeChamarProximoJogador(self):
+        print("Caso de teste - chama próximo jogador")
+        retornoEsperado = chamarProximoJogador(2, [1, 2, 3, 4])
+        self.assertEqual(retornoEsperado, 3)
+
+    def testeChamarProximoJogadorDepoisDaQuartaPosicao(self):
+        print("Caso de teste - chama próximo depois da quarta posicao")
+        retornoEsperado = chamarProximoJogador(4, [1, 2, 3, 4])
+        self.assertEqual(retornoEsperado, 1)
+
+    def testeChamarProximoJogadorRetornoMenos1(self):
+        print("Caso de teste - chama número fora do limite (retorno -1)")
+        retornoEsperado = chamarProximoJogador(6, [1, 2, 3, 4])
+        self.assertEqual(retornoEsperado, -1)
