@@ -1,9 +1,6 @@
 import random
 
+def rolarDado():
+    dado = random.randint(1, 6)
+    return dado
 
-def criarDado():
-    return tuple(range(1, 7))
-
-
-def rolarDado(dado):
-    return random.choice(dado)

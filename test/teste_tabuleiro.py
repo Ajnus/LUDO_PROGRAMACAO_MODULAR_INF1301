@@ -1,6 +1,8 @@
+import tkinter as tk
+from PIL import Image
+from db.dominioTabelas import *
 from src.tabuleiro import *
 import unittest
-
 
 class TesteTabuleiro(unittest.TestCase):
 

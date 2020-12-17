@@ -1,15 +1,13 @@
 import tkinter as tk
 from PIL import Image
 from db.dominioTabelas import *
-
-#Verificar erro na parte grafica.
-'''
+from src.dado import rolarDado
 root = tk.Tk()
 
 # Permite o usuario mudar o tamanho da tela
 root.resizable(width=False, height=False)
-root.geometry('750x750')  # Cria uma janela
-root.configure(background='black')
+root.geometry('1000x750')  # Cria uma janela
+root.configure(background='green')
 root.title("Ludo - Grupo 5")  # Nome da Janela
 
 # Usado no futuro também para rotações
@@ -39,9 +37,16 @@ sTop = tk.PhotoImage(file=sTopPath)
 sRight = tk.PhotoImage(file=sRightPath)
 sBot = tk.PhotoImage(file=sBotPath)
 
+#Pecas
+azul = tk.PhotoImage(file="Imagens\\azul.gif")
+amarelo = tk.PhotoImage(file="Imagens\\amarelo.gif")
+vermelho = tk.PhotoImage(file="Imagens\\vermelho.gif")
+verde = tk.PhotoImage(file="Imagens\\verde.gif")
+
 # estado/posição inicial do tabuleiro
 tabState = 0
 
+start = 0
 
 def criarTabuleiro():
 
@@ -153,8 +158,30 @@ def criarTabuleiro():
         consertaCaixa = 1
         horizontal += 50
 
-    return 1
+        #Peos
+        #Azul
+        tk.Label(image=azul, width=20, height=20).place(x=650, y=670)
+        tk.Label(image=azul, width=20, height=20).place(x=530, y=670)
+        tk.Label(image=azul, width=20, height=20).place(x=650, y=530)
+        tk.Label(image=azul, width=20, height=20).place(x=530, y=530)
 
+        #Amarelo
+        tk.Label(image=amarelo, width=20, height=20).place(x=50, y=670)
+        tk.Label(image=amarelo, width=20, height=20).place(x=210, y=670)
+        tk.Label(image=amarelo, width=20, height=20).place(x=50, y=530)
+        tk.Label(image=amarelo, width=20, height=20).place(x=210, y=530)
+
+        #Vermelho
+        tk.Label(image=vermelho, width=20, height=20).place(x=650, y=50)
+        tk.Label(image=vermelho, width=20, height=20).place(x=530, y=50)
+        tk.Label(image=vermelho, width=20, height=20).place(x=650, y=210)
+        tk.Label(image=vermelho, width=20, height=20, ).place(x=530, y=210)
+
+        #Verde
+        tk.Label(image=verde, width=20, height=20).place(x=50, y=50)
+        tk.Label(image=verde, width=20, height=20).place(x=50, y=210)
+        tk.Label(image=verde, width=20, height=20).place(x=210, y=50)
+        tk.Label(image=verde, width=20, height=20).place(x=210, y=210)
 
 def moverTabuleiro():
 
@@ -205,7 +232,7 @@ def moverTabuleiro():
         cBot = tk.PhotoImage(file="Imagens\\caixaamarelo.gif")
 
         sLeftPath = "Imagens\\paradaverde.gif"
-        sTopPath = "Imagens\\paradavermelho.gif"
+        sTopPath  = "Imagens\\paradavermelho.gif"
         sRightPath = "Imagens\\paradaazul.gif"
         sBotPath = "Imagens\\paradaamarelo.gif"
 
@@ -221,7 +248,7 @@ def moverTabuleiro():
         cBot = tk.PhotoImage(file="Imagens\\caixaazul.gif")
 
         sLeftPath = "Imagens\\paradaamarelo.gif"
-        sTopPath = "Imagens\\paradaverde.gif"
+        sTopPath  = "Imagens\\paradaverde.gif"
         sRightPath = "Imagens\\paradavermelho.gif"
         sBotPath = "Imagens\\paradaazul.gif"
 
@@ -237,10 +264,10 @@ def moverTabuleiro():
         cBot = tk.PhotoImage(file="Imagens\\caixavermelho.gif")
 
         sLeftPath = "Imagens\\paradaazul.gif"
-        sTopPath = "Imagens\\paradaamarelo.gif"
+        sTopPath  = "Imagens\\paradaamarelo.gif"
         sRightPath = "Imagens\\paradaverde.gif"
         sBotPath = "Imagens\\paradavermelho.gif"
-        
+
     elif tabState == 3:   # verde joga
         topLeft = tk.PhotoImage(file="Imagens\\basevermelho.gif")
         topRight = tk.PhotoImage(file="Imagens\\baseazul.gif")
@@ -253,14 +280,9 @@ def moverTabuleiro():
         cBot = tk.PhotoImage(file="Imagens\\caixaverde.gif")
 
         sLeftPath = "Imagens\\paradavermelho.gif"
-        sTopPath = "Imagens\\paradaazul.gif"
+        sTopPath  = "Imagens\\paradaazul.gif"
         sRightPath = "Imagens\\paradaamarelo.gif"
         sBotPath = "Imagens\\paradaverde.gif"
-
-    rotacionaCasaSaida()
-    criarTabuleiro()         # renderiza com as mudanças
-    return 1
-
 
 def rotacionaCasaSaida():
     global sLeft
@@ -293,25 +315,33 @@ def rotacionaCasaSaida():
     sBotR = sBotR.rotate(-90*tabState)
     sBotR.save(sBotPath[:-4] + 'R' + ".gif")
     sBot = tk.PhotoImage(file=sBotPath[:-4] + 'R' + ".gif")
-    
-    return
-'''
+
+c=10
+def main():
+    global start,c
+
+    if start == 0:
+        criarTabuleiro()
+        start = 1
+    else:
+        print("a")
+
+main()
 
 # Define todas as casas passáveis
 def definirStatusCasa(posicao):
-    if posicao < 57:    # casas passáveis
+    if posicao < 57: #casas passáveis
         return 0
-    if posicao == 57:   # casa final
+    if posicao == 57: # casa final
         return 1
     else:
         return 2
- 
 
 # Remove o peão do jogador
 def removerPeaoDoJogador(idPeao):
     session = Session()
     try:
-        peaoCodigo = session.query(Peao).filter_by(codigo=idPeao).one()
+        peaoCodigo = session.query(Peao).filter_by(codigo = idPeao).one()
         session.delete(peaoCodigo)
         atualizarBD()
         return 1
@@ -319,25 +349,24 @@ def removerPeaoDoJogador(idPeao):
         peaoCodigo = 0
         return 0
 
-
+# Move o peão para base
 def moverParaBase(idPeao):
     session = Session()
     try:
-        posPeao = session.query(Peao).filter_by(codigo=idPeao).one()
-        posPeao.posicao = 0
-        atualizarBD()
-        return 0
+       posPeao = session.query(Peao).update(codigo = idPeao, posicao = 0 )
+       atualizarBD()
+       return 0
     except:
-        posPeao = -1
         return 1
+
 
 def criarCasasTabuleiro():
     session = Session()
-
     for casa in range(1, 77):
         tabuleiro = Tabuleiro(casa=casa)
         session.add(tabuleiro)
         atualizarBD()
+
 
 def armazenaStatusCasaTabState(casa, statusCasa, tabState):
     try:
@@ -348,6 +377,7 @@ def armazenaStatusCasaTabState(casa, statusCasa, tabState):
         return 0
     except:
         return 1
+
 
 def alteraStatusCasa(idCasa):
     try:
@@ -362,6 +392,7 @@ def alteraStatusCasa(idCasa):
     except:
         return 1
 
+
 def verificarStatusCasa(idCasa):
     try:
         session = Session()
@@ -369,8 +400,9 @@ def verificarStatusCasa(idCasa):
         return casa.statusCasa
     except:
         return 1
-    
-#Mover Peão
+
+
+# Mover Peão
 def moverPeao(idPeao, valorDado):
     session = Session()
     try:
@@ -381,8 +413,9 @@ def moverPeao(idPeao, valorDado):
     except:
         posPeao = -1
         return 1
-    
-#Sair da Base
+
+
+# Sair da Base
 def sairBase(idPeao):
     session = Session()
     try:
@@ -394,3 +427,18 @@ def sairBase(idPeao):
         posPeao = -1
         return 1
 
+def clique(evento):
+    main()
+
+root.bind("<Button-1>", clique)
+
+def valorDado():
+    dado = rolarDado()
+    L1 = tk.Label(root, text=dado, fg='Black', background='green', font=("Arial", 24, "bold"))
+    L1.place(x=800, y=200)
+
+#Butao
+butao = tk.Button(root, text="   ROLAR   ", relief="raised", font=("Arial", 20),command = valorDado)
+butao.place(x=790, y=50)
+
+root.mainloop()
