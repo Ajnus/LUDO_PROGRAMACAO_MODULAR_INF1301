@@ -2,6 +2,7 @@ import tkinter as tk
 from PIL import Image
 from db.dominioTabelas import *
 from src.dado import rolarDado
+
 root = tk.Tk()
 
 # Permite o usuario mudar o tamanho da tela
@@ -47,6 +48,23 @@ verde = tk.PhotoImage(file="Imagens\\verde.gif")
 tabState = 0
 
 start = 0
+
+CasasB = {1: (22, 374), 2: ('23', '323'), 3: ('73', '323'), 4: ('121', '323'), 5: ('174', '323'), 6: ('223', '322'), 7: ('272', '321'), 8: ('322', '274'), 9: ('323', '222'), 10: ('323', '170'), 11: ('325', '125'), 12: ('323', '74'), 13: ('322', '21'), 14: ('373', '20'), 15: ('423', '23'), 16: ('424', '74'), 17: ('422', '123'), 18: ('423', '172'), 19: ('423', '223'), 20: ('423', '273'), 21: ('474', '321'), 22: ('523', '322'), 23: ('571', '323'), 24: ('625', '324'), 25: ('674', '323'), 26: ('722', '321'), 27: ('724', '373'), 28: ('723', '421'), 29: ('665', '415'), 30: ('624', '421'), 31: ('574', '422'), 32: ('524', '425'), 33: ('473', '424'), 34: ('423', '472'), 35: ('424', '522'), 36: ('422', '573'), 37: ('425', '624'), 38: ('422', '673'), 39: ('424', '721'), 40: ('375', '723'), 41: ('323', '722'), 42: ('315', '665'), 43: ('323', '623'), 44: ('322', '572'), 45: ('323', '522'), 46: ('323', '472'), 47: ('275', '423'), 48: ('222', '423'), 49: ('174', '425'), 50: ('125', '425'), 51: ('76', '424'), 52: ('22', '424')}
+#Casa 3 - Saida Verde
+#Casa 16 - Saida Vermelho
+#Casa 29 - Saida Azul
+#Casa 42 - Saida Amarelo
+#Casa 11,24,37,50 - Estrela
+
+CasasVerdes = {1: ('73', '373'), 2: ('125', '375'), 3: ('176', '376'), 4: ('224', '375'), 5: ('273', '375'), 6: ('324', '374')}
+CasasVermelhas = {1: ('373', '75'), 2: ('373', '127'), 3: ('373', '174'), 4: ('376', '227'), 5: ('375', '276'), 6: ('377', '322')}
+CasasAzul = {1: ('674', '375'), 2: ('624', '375'), 3: ('574', '376'), 4: ('528', '373'), 5: ('470', '371'), 6: ('421', '373')}
+CasasAmarelo = {1: ('373', '675'), 2: ('374', '624'), 3: ('373', '575'), 4: ('375', '524'), 5: ('374', '475'), 6: ('377', '421')}
+
+BaseAzul = {1: ('650', '670'), 2: ('530', '670'), 3: ('650', '530'), 4: ('530', '530')}
+BaseAmarelo = {1: ('50', '670'), 2: ('210', '670'), 3: ('50', '530'), 4: ('210', '530')}
+BaseVermelo = {1: ('650', '50'), 2: ('530', '50'), 3: ('650', '210'), 4: ('530', '210')}
+BaseVerde = {1: ('50', '50'), 2: ('50', '210'), 3: ('210', '50'), 4: ('210', '210')}
 
 def criarTabuleiro():
 
@@ -158,30 +176,47 @@ def criarTabuleiro():
         consertaCaixa = 1
         horizontal += 50
 
-        #Peos
-        #Azul
-        tk.Label(image=azul, width=20, height=20).place(x=650, y=670)
-        tk.Label(image=azul, width=20, height=20).place(x=530, y=670)
-        tk.Label(image=azul, width=20, height=20).place(x=650, y=530)
-        tk.Label(image=azul, width=20, height=20).place(x=530, y=530)
+def posPeao():
+    global AZ1, AZ2, AZ3, AZ4, AM1, AM2, AM3, AM4, VD1, VD2, VD3, VD4, VM1, VM2, VM3, VM4
+    # Azul
+    AZ1 = tk.Label(image=azul, width=20, height=20)
+    AZ1.place(x=650, y=670)
+    AZ2 = tk.Label(image=azul, width=20, height=20)
+    AZ2.place(x=530, y=670)
+    AZ3 = tk.Label(image=azul, width=20, height=20)
+    AZ3.place(x=650, y=530)
+    AZ4 = tk.Label(image=azul, width=20, height=20)
+    AZ4.place(x=530, y=530)
 
-        #Amarelo
-        tk.Label(image=amarelo, width=20, height=20).place(x=50, y=670)
-        tk.Label(image=amarelo, width=20, height=20).place(x=210, y=670)
-        tk.Label(image=amarelo, width=20, height=20).place(x=50, y=530)
-        tk.Label(image=amarelo, width=20, height=20).place(x=210, y=530)
+    # Amarelo
+    AM1 = tk.Label(image=amarelo, width=20, height=20)
+    AM1.place(x=50, y=670)
+    AM2 = tk.Label(image=amarelo, width=20, height=20)
+    AM2.place(x=210, y=670)
+    AM3 = tk.Label(image=amarelo, width=20, height=20)
+    AM3.place(x=50, y=530)
+    AM4 = tk.Label(image=amarelo, width=20, height=20)
+    AM4.place(x=210, y=530)
 
-        #Vermelho
-        tk.Label(image=vermelho, width=20, height=20).place(x=650, y=50)
-        tk.Label(image=vermelho, width=20, height=20).place(x=530, y=50)
-        tk.Label(image=vermelho, width=20, height=20).place(x=650, y=210)
-        tk.Label(image=vermelho, width=20, height=20, ).place(x=530, y=210)
+    # Vermelho
+    VM1 = tk.Label(image=vermelho, width=20, height=20)
+    VM1.place(x=650, y=50)
+    VM2 = tk.Label(image=vermelho, width=20, height=20)
+    VM2.place(x=530, y=50)
+    VM3 = tk.Label(image=vermelho, width=20, height=20)
+    VM3.place(x=650, y=210)
+    VM4 = tk.Label(image=vermelho, width=20, height=20)
+    VM4.place(x=530, y=210)
 
-        #Verde
-        tk.Label(image=verde, width=20, height=20).place(x=50, y=50)
-        tk.Label(image=verde, width=20, height=20).place(x=50, y=210)
-        tk.Label(image=verde, width=20, height=20).place(x=210, y=50)
-        tk.Label(image=verde, width=20, height=20).place(x=210, y=210)
+    # Verde
+    VD1 = tk.Label(image=verde, width=20, height=20)
+    VD1.place(x=50, y=50)
+    VD2 = tk.Label(image=verde, width=20, height=20)
+    VD2.place(x=50, y=210)
+    VD3 = tk.Label(image=verde, width=20, height=20)
+    VD3.place(x=210, y=50)
+    VD4 = tk.Label(image=verde, width=20, height=20)
+    VD4.place(x=210, y=210)
 
 def moverTabuleiro():
 
@@ -284,6 +319,9 @@ def moverTabuleiro():
         sRightPath = "Imagens\\paradaamarelo.gif"
         sBotPath = "Imagens\\paradaverde.gif"
 
+    rotacionaCasaSaida()
+    criarTabuleiro()
+
 def rotacionaCasaSaida():
     global sLeft
     global sTop
@@ -316,17 +354,57 @@ def rotacionaCasaSaida():
     sBotR.save(sBotPath[:-4] + 'R' + ".gif")
     sBot = tk.PhotoImage(file=sBotPath[:-4] + 'R' + ".gif")
 
-c=10
+
 def main():
-    global start,c
+    global start,cx,cy,AZ1,AZ2,AZ3,AZ4,AM1,AM2,AM3,AM4,VD1,VD2,VD3,VD4,VM1,VM2,VM3,VM4
 
     if start == 0:
         criarTabuleiro()
-        start = 1
+
+
     else:
-        print("a")
+
+        if int(BaseAzul[1][0])-20<=cx<=int(BaseAzul[1][0])+20 and int(BaseAzul[1][1])-20<=cy<=int(BaseAzul[1][1])+20:
+            AZ1.place(x=int(CasasB[29][0]),y=int(CasasB[29][1]))
+        elif int(BaseAzul[2][0])-20<=cx<=int(BaseAzul[2][0])+20 and int(BaseAzul[2][1])-20<=cy<=int(BaseAzul[2][1])+20:
+            AZ2.place(x=int(CasasB[29][0]),y=int(CasasB[29][1]))
+        elif int(BaseAzul[3][0])-20<=cx<=int(BaseAzul[3][0])+20 and int(BaseAzul[3][1])-20<=cy<=int(BaseAzul[3][1])+20:
+            AZ3.place(x=int(CasasB[29][0]),y=int(CasasB[29][1]))
+        elif int(BaseAzul[4][0])-20<=cx<=int(BaseAzul[4][0])+20 and int(BaseAzul[4][1])-20<=cy<=int(BaseAzul[4][1])+20:
+            AZ4.place(x=int(CasasB[29][0]),y=int(CasasB[29][1]))
+
+        if int(BaseAmarelo[1][0])-20<=cx<=int(BaseAmarelo[1][0])+20 and int(BaseAmarelo[1][1])-20<=cy<=int(BaseAmarelo[1][1])+20:
+            AM1.place(x=int(CasasB[42][0]),y=int(CasasB[42][1]))
+        elif int(BaseAmarelo[2][0])-20<=cx<=int(BaseAmarelo[2][0])+20 and int(BaseAmarelo[2][1])-20<=cy<=int(BaseAmarelo[2][1])+20:
+            AM2.place(x=int(CasasB[42][0]), y=int(CasasB[42][1]))
+        elif int(BaseAmarelo[3][0])-20<=cx<=int(BaseAmarelo[3][0])+20 and int(BaseAmarelo[3][1])-20<=cy<=int(BaseAmarelo[3][1])+20:
+            AM3.place(x=int(CasasB[42][0]), y=int(CasasB[42][1]))
+        elif int(BaseAmarelo[4][0])-20<=cx<=int(BaseAmarelo[4][0])+20 and int(BaseAmarelo[4][1])-20<=cy<=int(BaseAmarelo[4][1])+20:
+            AM4.place(x=int(CasasB[42][0]), y=int(CasasB[42][1]))
+
+        if int(BaseVerde[1][0])-20<=cx<=int(BaseVerde[1][0])+20 and int(BaseVerde[1][1])-20<=cy<=int(BaseVerde[1][1])+20:
+            VD1.place(x=int(CasasB[3][0])-10,y=int(CasasB[3][1])-10)
+        elif int(BaseVerde[2][0])-20<=cx<=int(BaseVerde[2][0])+20 and int(BaseVerde[2][1])-20<=cy<=int(BaseVerde[2][1])+20:
+            VD2.place(x=int(CasasB[3][0])-10,y=int(CasasB[3][1])-10)
+        elif int(BaseVerde[3][0])-20<=cx<=int(BaseVerde[3][0])+20 and int(BaseVerde[3][1])-20<=cy<=int(BaseVerde[3][1])+20:
+            VD3.place(x=int(CasasB[3][0])-10,y=int(CasasB[3][1])-10)
+        elif int(BaseVerde[4][0])-20<=cx<=int(BaseVerde[4][0])+20 and int(BaseVerde[4][1])-20<=cy<=int(BaseVerde[4][1])+20:
+            VD4.place(x=int(CasasB[3][0])-10,y=int(CasasB[3][1])-10)
+
+        if int(BaseVermelo[1][0])-20<=cx<=int(BaseVermelo[1][0])+20 and int(BaseVermelo[1][1])-20<=cy<=int(BaseVermelo[1][1])+20:
+            VM1.place(x=int(CasasB[16][0])-10,y=int(CasasB[16][1])-10)
+        elif int(BaseVermelo[2][0])-20<=cx<=int(BaseVermelo[2][0])+20 and int(BaseVermelo[2][1])-20<=cy<=int(BaseVermelo[2][1])+20:
+            VM2.place(x=int(CasasB[16][0])-10,y=int(CasasB[16][1])-10)
+        elif int(BaseVermelo[3][0])-20<=cx<=int(BaseVermelo[3][0])+20 and int(BaseVermelo[3][1])-20<=cy<=int(BaseVermelo[3][1])+20:
+            VM3.place(x=int(CasasB[16][0])-10,y=int(CasasB[16][1])-10)
+        elif int(BaseVermelo[4][0])-20<=cx<=int(BaseVermelo[4][0])+20 and int(BaseVermelo[4][1])-20<=cy<=int(BaseVermelo[4][1])+20:
+            VM4.place(x=int(CasasB[16][0])-10,y=int(CasasB[16][1])-10)
+
+        if int(CasasB[29][0])-20<=cx<=int(CasasB[29][0])+20 and int(CasasB[29][1])-20<=cy<=int(CasasB[29][1])+20:
+            AZ1.place(x=int(CasasB[29+20][0])-10, y=int(CasasB[29+20][1])-10)
 
 main()
+posPeao()
 
 # Define todas as casas passáveis
 def definirStatusCasa(posicao):
@@ -428,6 +506,11 @@ def sairBase(idPeao):
         return 1
 
 def clique(evento):
+    global cx,cy,start
+    start = 1
+    cx = root.winfo_pointerx() - root.winfo_rootx()
+    cy = root.winfo_pointery() - root.winfo_rooty()
+    print(cx,cy)
     main()
 
 root.bind("<Button-1>", clique)
