@@ -3,24 +3,23 @@ from src.peao import *
 from src.partida import *
 from src.tabuleiro import *
 from src.gerenciaJogada import *
+from src.parteGrafica import main2
 import tkinter as tk
 from db.dominioTabelas import Session
 from db.dominioTabelas import Partida
-
+from src.dado import rolarDado
 
 def main():
-
     session = Session()
 
     # Criando a partida
     numPartida = criaPartida()
 
 
-
     #Criando e cadastrando peoes:
     if len(session.query(Peao.codigo).all()) < 16:
         print(criarPeoes())
-
+    '''
     #Criando e cadastrando jogadores
     cores = coresDisponiveis()
     numeroDeJogadores = 4
@@ -34,13 +33,15 @@ def main():
 
     armazenaPartida(numPartida)
 
-
+    '''
     #Criando tabuleiro
     if len(session.query(Tabuleiro.casa).all()) < 92:
         criarCasasTabuleiro()
 
-    ordemJogador()
 
+    numeroJogadores = Sorteio(0)
+    ordem = ordemJogador(numeroJogadores)
+    main2()
 
 
 main()
