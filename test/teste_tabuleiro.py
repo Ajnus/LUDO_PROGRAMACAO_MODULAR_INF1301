@@ -79,7 +79,7 @@ class TesteTabuleiro(unittest.TestCase):
 
     def testeMoverParaBaseRetorno0(self):
         print("Caso de teste - move para a base (retorno 0)")
-        retornoEsperado = moverParaBase(2)
+        retornoEsperado = moverParaBase(12)
         self.assertEqual(retornoEsperado, 0)
 
     def testeMoverParaBaseRetorno1(self):
