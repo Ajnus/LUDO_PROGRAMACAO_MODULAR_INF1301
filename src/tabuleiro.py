@@ -13,24 +13,23 @@ def definirStatusCasa(posicao):
 def removerPeaoDoJogador(idPeao):
     session = Session()
     try:
-        peaoCodigo = session.query(Peao).filter_by(codigo = idPeao).one()
-        session.delete(peaoCodigo)
+        session.query(Peao).filter_by(codigo = idPeao).one()
+        session.query(Peao).filter_by(codigo = idPeao).update({'nojogo': False})
         atualizarBD()
-        return 1
-    except:
-        peaoCodigo = 0
         return 0
+    except:
+        return 1
 
 # Move o peão para base
 def moverParaBase(idPeao):
     session = Session()
     try:
-       posPeao = session.query(Peao).update(codigo = idPeao, posicao = 0 )
-       atualizarBD()
-       return 0
+        peao = session.query(Peao).filter(Peao.codigo==idPeao).one()
+        session.query(Peao).filter(Peao.codigo==idPeao).update({'posicao':0})
+        atualizarBD()
+        return 0
     except:
         return 1
-
 
 def criarCasasTabuleiro():
     session = Session()

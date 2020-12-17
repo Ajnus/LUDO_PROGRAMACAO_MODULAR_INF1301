@@ -1,7 +1,4 @@
-import tkinter as tk
-from PIL import Image
-from db.dominioTabelas import *
-from src.tabuleiro import *
+from src.tabuleiro import definirStatusCasa,alteraStatusCasa,verificarStatusCasa,removerPeaoDoJogador, moverParaBase, moverPeao, sairBase
 import unittest
 
 class TesteTabuleiro(unittest.TestCase):
@@ -53,7 +50,7 @@ class TesteTabuleiro(unittest.TestCase):
         self.assertEqual(retornoEsperado, 0)
 
     def testeRemoverPeaoRetorno1(self):
-        print("Caso de teste - não remove peao (retorno 0)")
+        print("Caso de teste - não remove peao (retorno 1)")
         retornoEsperado = removerPeaoDoJogador(555)
         self.assertEqual(retornoEsperado, 1)
 
@@ -79,7 +76,7 @@ class TesteTabuleiro(unittest.TestCase):
 
     def testeMoverParaBaseRetorno0(self):
         print("Caso de teste - move para a base (retorno 0)")
-        retornoEsperado = moverParaBase(12)
+        retornoEsperado = moverParaBase(4)
         self.assertEqual(retornoEsperado, 0)
 
     def testeMoverParaBaseRetorno1(self):
