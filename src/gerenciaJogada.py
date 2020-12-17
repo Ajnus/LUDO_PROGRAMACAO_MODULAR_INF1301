@@ -1,7 +1,8 @@
 from db import base
 from db.dominioTabelas import Session, atualizarBD, Peao, Jogador
 from src.tabuleiro import removerPeaoDoJogador
-
+from src.parteGrafica import valorDado
+from src.dado import rolarDado
 
 #ordena os jogadores
 def ordemJogador(resultadoRolagemDados):
@@ -81,3 +82,13 @@ def chamarProximoJogador(idJogador, ordem):
             else:
                 return ordem[i + 1]
     return -1
+
+
+def Sorteio(numPartida):
+    session = Session()
+    jogadores = session.query(Jogador).filter(Jogador.numpartida == numPartida).all()
+    listaJogadoresNumero = []
+    for i,jogador in enumerate(jogadores):
+        dado = rolarDado()
+        listaJogadoresNumero.append((dado,jogador.codigo))
+    return listaJogadoresNumero

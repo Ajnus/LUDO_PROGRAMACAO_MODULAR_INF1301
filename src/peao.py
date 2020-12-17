@@ -7,11 +7,13 @@ def criarPeoes():
     try:
         excecao = InputError()
         cores = base.peoesCoresDisponiveis
-        posicao = 0
+        posicao = list(range(77,93))
+        j = 0
         for cor in cores:
             for i in range(4):
                 codigo = excecao.gerarCodigoPeao()
-                armazenaPeao(codigo, cor, posicao)
+                armazenaPeao(codigo, cor, posicao[j])
+                j += 1
         return 0
 
     except:
