@@ -47,12 +47,42 @@ class TesteTabuleiro(unittest.TestCase):
         resultado = verificarStatusCasa(222)
         self.assertEqual(resultado, 1)
         
-    def testeRemoverPeaoRetorno1(self):
-        print("Caso de teste - remove peao (retorno 1)")
-        retornoEsperado = removerPeaoDoJogador(2)
-        self.assertEqual(retornoEsperado, 1)
-
     def testeRemoverPeaoRetorno0(self):
+        print("Caso de teste - remove peao (retorno 0)")
+        retornoEsperado = removerPeaoDoJogador(2)
+        self.assertEqual(retornoEsperado, 0)
+
+    def testeRemoverPeaoRetorno1(self):
         print("Caso de teste - não remove peao (retorno 0)")
         retornoEsperado = removerPeaoDoJogador(555)
+        self.assertEqual(retornoEsperado, 1)
+
+    def testeMoverPeaoRetorno0(self):
+        print("Caso de teste - move peao (retorno 0)")
+        retornoEsperado = moverPeao(1, 5)
         self.assertEqual(retornoEsperado, 0)
+
+    def testeMoverPeaoRetorno1(self):
+        print("Caso de teste - não move peao (retorno 1)")
+        retornoEsperado = moverPeao(1, 559)
+        self.assertEqual(retornoEsperado, 1)
+
+    def testeSairBaseRetorno0(self):
+        print("Caso de teste - sai da base (retorno 0)")
+        retornoEsperado = sairBase(4)
+        self.assertEqual(retornoEsperado, 0)
+
+    def testeSairBaseRetorno1(self):
+        print("Caso de teste - não sai da base (retorno 1)")
+        retornoEsperado = sairBase(600)
+        self.assertEqual(retornoEsperado, 1)
+
+    def testeMoverParaBaseRetorno0(self):
+        print("Caso de teste - move para a base (retorno 0)")
+        retornoEsperado = moverParaBase(2)
+        self.assertEqual(retornoEsperado, 0)
+
+    def testeMoverParaBaseRetorno1(self):
+        print("Caso de teste - não move para base (retorno 1)")
+        retornoEsperado = moverParaBase(900)
+        self.assertEqual(retornoEsperado, 1)
