@@ -369,3 +369,15 @@ def verificarStatusCasa(idCasa):
         return casa.statusCasa
     except:
         return 1
+    
+#Mover Peão
+def moverPeao(idPeao, valorDado):
+    session = Session()
+    try:
+        posPeao = session.query(Peao).filter_by(codigo=idPeao).one()
+        posPeao.posicao += valorDado
+        atualizarBD()
+        return 0
+    except:
+        posPeao = -1
+        return 1
