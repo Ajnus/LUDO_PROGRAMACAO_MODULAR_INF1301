@@ -15,7 +15,7 @@ def main():
     #Criando e cadastrando peoes:
     if len(session.query(Peao.codigo).all()) < 16:
         criarPeoes()
-
+'''
     #Criando e cadastrando jogadores
     cores = coresDisponiveis()
     numeroDeJogadores = 4
@@ -35,5 +35,5 @@ def main():
     #moverTabuleiro()
 
     #root.mainloop()
-
+'''
 main()
