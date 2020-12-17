@@ -4,10 +4,9 @@ from src.gerenciaJogada import *
 from src.dado import rolarDado
 from db.dominioTabelas import Session,Peao
 
-global numeroJogadores
-global ordem
-numeroJogadores = sorteio(0)
-ordem = ordemJogador(numeroJogadores)
+global numSorteado, fimVez
+fimVez = False
+numSorteado = 0
 
 root = tk.Tk()
 
@@ -371,17 +370,41 @@ def rotacionaCasaSaida():
 
 def main2():
     session = Session()
-    global start,cx,cy,AM0,AM1,AM2,AM3,AZ4,AZ5,AZ6,AZ7,VD8,VD9,VD10,VD11,VM12,VM13,VM14,VM15
+    global start,cx,cy,AM0,AM1,AM2,AM3,AZ4,AZ5,AZ6,AZ7,VD8,VD9,VD10,VD11,VM12,VM13,VM14,VM15, \
+           numeroJogadores, ordem, jogadorDaVez,nomeJogadorDaVez,exibeJogadorDaVez, numSorteado, fimVez
     if start == 0:
         criarTabuleiro()
         posPeao()
-
-    else:
-        print(ordem)
+        numeroJogadores = sorteio(0)
+        ordem = ordemJogador(numeroJogadores)
         jogadorDaVez = chamarProximoJogador(ordem)
         nomeJogadorDaVez = session.query(Jogador.nome).filter(Jogador.codigo == jogadorDaVez).one()[0]
-        print(nomeJogadorDaVez)
+        exibeJogadorDaVez = tk.Label(root, text='Proximo \njogador:\n' + nomeJogadorDaVez, fg='Black',
+                                     background='green', font=("Arial", 24, "bold"))
+        exibeJogadorDaVez.place(x=800, y=400)
+        exibeMsg = tk.Label(root, text='\nClique em Rolar.', fg='Black',
+                                     background='green', font=("Arial", 18, "bold"))
+        exibeMsg.place(x=780, y=550)
 
+    else:
+
+        while fimVez == False                :
+            if numSorteado == 6:
+                exibeMsg = tk.Label(root, text='\nEscolha sua Jogada.', fg='Black',
+                                             background='green', font=("Arial", 18, "bold"))
+                exibeMsg.place(x=780, y=550)
+                break
+            else:
+                exibeMsg = tk.Label(root, text='\nRole o dado.', fg='Black',
+                                    background='green', font=("Arial", 18, "bold"))
+                exibeMsg.place(x=780, y=550)
+                fimVez = True
+        fimVez = False
+        jogadorDaVez = chamarProximoJogador(ordem)
+        nomeJogadorDaVez = session.query(Jogador.nome).filter(Jogador.codigo == jogadorDaVez).one()[0]
+        exibeJogadorDaVez = tk.Label(root, text='Proximo \njogador:\n' + nomeJogadorDaVez, fg='Black',
+                                     background='green', font=("Arial", 24, "bold"))
+        exibeJogadorDaVez.place(x=800, y=400)
 
 
 
@@ -389,9 +412,8 @@ def main2():
         try:
             casa = traduz(CasasB)
             peaopos = session.query(Peao).filter(Peao.posicao == casa).all()
-            #print(casa)
-            #for i in range(len(peaopos)):
-             #   print(peaopos[i].posicao)
+            for i in range(len(peaopos)):
+                print(peaopos[i].posicao)
         except:
             pass
 
@@ -462,11 +484,12 @@ def clique(evento):
 root.bind("<Button-1>", clique)
 
 def valorDado():
-    dado = rolarDado()
-    L1 = tk.Label(root, text=dado, fg='Black', background='green', font=("Arial", 24, "bold"))
+    global numSorteado
+    numSorteado = rolarDado()
+    L1 = tk.Label(root, text=numSorteado, fg='Black', background='green', font=("Arial", 24, "bold"))
     L1.place(x=800, y=200)
 
-    return dado
+    return numSorteado
 
 #Butao
 butao = tk.Button(root, text="   ROLAR   ", relief="raised", font=("Arial", 20),command = valorDado)
