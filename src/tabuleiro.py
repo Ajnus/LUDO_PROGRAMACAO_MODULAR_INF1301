@@ -33,7 +33,7 @@ def moverParaBase(idPeao):
 
 def criarCasasTabuleiro():
     session = Session()
-    for casa in range(1, 77):
+    for casa in range(1, 93):
         tabuleiro = Tabuleiro(casa=casa)
         session.add(tabuleiro)
         atualizarBD()
