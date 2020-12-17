@@ -38,10 +38,5 @@ def main():
     if len(session.query(Tabuleiro.casa).all()) < 92:
         criarCasasTabuleiro()
 
-
-    numeroJogadores = Sorteio(0)
-    ordem = ordemJogador(numeroJogadores)
-    main2()
-
-
 main()
+main2()

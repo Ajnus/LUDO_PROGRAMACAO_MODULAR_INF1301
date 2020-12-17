@@ -1,9 +1,13 @@
 import tkinter as tk
 from PIL import Image
-from db.dominioTabelas import *
+from src.gerenciaJogada import *
 from src.dado import rolarDado
 from db.dominioTabelas import Session,Peao
-import src.principal
+
+global numeroJogadores
+global ordem
+numeroJogadores = sorteio(0)
+ordem = ordemJogador(numeroJogadores)
 
 root = tk.Tk()
 
@@ -368,14 +372,19 @@ def rotacionaCasaSaida():
 def main2():
     session = Session()
     global start,cx,cy,AM0,AM1,AM2,AM3,AZ4,AZ5,AZ6,AZ7,VD8,VD9,VD10,VD11,VM12,VM13,VM14,VM15
-
     if start == 0:
         criarTabuleiro()
         posPeao()
 
     else:
+        print(ordem)
+        jogadorDaVez = chamarProximoJogador(ordem)
+        nomeJogadorDaVez = session.query(Jogador.nome).filter(Jogador.codigo == jogadorDaVez).one()[0]
+        print(nomeJogadorDaVez)
 
-        print(principal.ordem)
+
+
+
 
         try:
             casa = traduz(CasasB)
