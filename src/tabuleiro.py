@@ -381,3 +381,16 @@ def moverPeao(idPeao, valorDado):
     except:
         posPeao = -1
         return 1
+    
+#Sair da Base
+def sairBase(idPeao):
+    session = Session()
+    try:
+        posPeao = session.query(Peao).filter_by(codigo=idPeao).one()
+        posPeao.posicao = 1
+        atualizarBD()
+        return 0
+    except:
+        posPeao = -1
+        return 1
+
