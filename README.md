@@ -1,4 +1,4 @@
-# INF1013 - Modelagem De Software
+# INF1013 - Programação Modular
 Jogo de Ludo
 
 Objetivo do jogo:
