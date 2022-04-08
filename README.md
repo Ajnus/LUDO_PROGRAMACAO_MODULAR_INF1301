@@ -1,5 +1,4 @@
-#INF1301 - Programação Modular
-
+# INF1013 - Modelagem De Software
 Jogo de Ludo
 
 Objetivo do jogo:
