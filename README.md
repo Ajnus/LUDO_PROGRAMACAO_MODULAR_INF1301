@@ -1,5 +1,8 @@
-# INF1013 - Programação Modular
-Jogo de Ludo
+![ludo(1)](https://github.com/Ajnus/LUDO_PROGRAMACAO_MODULAR_INF1301/assets/8205907/0cf90af3-bda5-4826-8385-17ab4ecb1f4a)
+
+# LUDO
+
+INF1301 - Programação Modular
 
 Objetivo do jogo:
   Percorrer o trajeto do tabuleiro com todas as peças e ser o primeiro jogador a chegar a casa central.
